@@ -11,7 +11,6 @@ public class FormValidator : ServerModelMaster
 {
 
     #region variables
-    public Toggle ConsentF;
     bool Text1OK = false;
     bool Text2OK = false;
     bool Text3OK = false;
@@ -53,7 +52,7 @@ public class FormValidator : ServerModelMaster
     // Update is called once per frame
     void Update()
     {
-        if (Text1OK && Text2OK && Text3OK && ConsentF.isOn && userIsUnique)
+        if (Text1OK && Text2OK && Text3OK && userIsUnique)
         {
             Submit.interactable = true;
             virtualSubmit.interactable = true;

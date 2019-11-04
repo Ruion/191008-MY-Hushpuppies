@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ScoreVisualizer : GameSettingEntity {
 
     public TextMeshProUGUI[] scoreTexts;
+    public Text[] UnityUIScoreTexts;
     private int score;
     public ScriptableScore scriptableScore;
     [Header("Caution")]
@@ -43,6 +45,11 @@ public class ScoreVisualizer : GameSettingEntity {
         {
             scoreTexts[t].text = score.ToString();
         }
+
+        for (int t = 0; t < UnityUIScoreTexts.Length; t++)
+        {
+            UnityUIScoreTexts[t].text = score.ToString();
+        }
     }
 
     public void VisualiseScore(ScriptableScore scriptableScore)
@@ -50,6 +57,11 @@ public class ScoreVisualizer : GameSettingEntity {
         for (int t = 0; t < scoreTexts.Length; t++)
         {
             scoreTexts[t].text = scriptableScore.score.ToString();
+        }
+
+        for (int t = 0; t < UnityUIScoreTexts.Length; t++)
+        {
+            UnityUIScoreTexts[t].text = scriptableScore.score.ToString();
         }
     }
 

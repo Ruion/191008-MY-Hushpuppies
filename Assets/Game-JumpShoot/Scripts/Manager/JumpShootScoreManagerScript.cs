@@ -6,10 +6,10 @@ using TMPro;
 public class JumpShootScoreManagerScript : GameSettingEntity {
 	public int currentScore = 0;
 	public int totalScore = 0;
-	public TextMeshPro totalScoreText;
-	public TextMeshPro currentScoreText;
-	public TextMeshPro bestScoreText;
-	public TextMeshPro best;
+	public TextMeshProUGUI totalScoreText;
+	public TextMeshProUGUI currentScoreText;
+	public TextMeshProUGUI bestScoreText;
+	public TextMeshProUGUI best;
 	public Animator animator;
     public ScriptableScore scoreCard;
 	[ReadOnly] public float bestScore;
@@ -38,7 +38,7 @@ public class JumpShootScoreManagerScript : GameSettingEntity {
         currentScore = scoreCard.score;
 		currentScoreText.text = currentScore.ToString();
 
-        animator.Play("1");
+     //   animator.Play("1");
 	}
 
     public void AddScoreShoe()

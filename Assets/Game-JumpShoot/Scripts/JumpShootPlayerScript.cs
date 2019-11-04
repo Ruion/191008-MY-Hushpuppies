@@ -46,7 +46,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		animatorComponent = GetComponent<Animator>();
 		//currentPlayerState = PlayerState.Jumping;
 		currentPlayerState = PlayerState.Standing;
-		animatorComponent.SetBool("Jumping",true);
+	//	animatorComponent.SetBool("Jumping",true);
 	}
 
 	void Start(){
@@ -73,7 +73,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
 
 		rigidBody2DComponent.velocity = Vector2.zero;
 		currentPlayerState = PlayerState.Standing;
-		animatorComponent.SetBool("Jumping",false);
+	//	animatorComponent.SetBool("Jumping",false);
 		transform.SetParent(target.gameObject.transform);
 		GetPreviousPositionOfParent();
 		if(initialCollide == false){
@@ -148,7 +148,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
         GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayJumpSound();
 		boxCollider2D.enabled = false;
 		currentPlayerState = PlayerState.Jumping;
-		animatorComponent.SetBool("Jumping",true);
+	//	animatorComponent.SetBool("Jumping",true);
 	
 		if(standingGroundType == GroundScript.GroundType.JumpHigh){
 			// rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed * 1.08f);

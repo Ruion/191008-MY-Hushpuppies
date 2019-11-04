@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObjectReposition : MonoBehaviour
 {
-    public List<Transform> destinations;
-    public List<Transform> newObject;
+    public List<RectTransform> destinations;
+    public List<RectTransform> newObject;
 
     [ContextMenu("Reposition")]
     public void Reposition()
@@ -13,6 +13,8 @@ public class ObjectReposition : MonoBehaviour
         for (int i = 0; i < destinations.Count; i++)
         {
             newObject[i].position = destinations[i].position;
+            newObject[i].sizeDelta = destinations[i].sizeDelta;
+            newObject[i].localScale = destinations[i].localScale;
         }
     }
 }

@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3935559336842415451
 CanvasRenderer:
@@ -65,8 +65,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5db6d59a0e2ab7044bf48d650dc363f8, type: 2}
-  m_sharedMaterial: {fileID: -6887115967754153296, guid: 5db6d59a0e2ab7044bf48d650dc363f8,
+  m_fontAsset: {fileID: 11400000, guid: 4631a32b2e49c4b43b619e84b216052e, type: 2}
+  m_sharedMaterial: {fileID: 6764924253355675598, guid: 4631a32b2e49c4b43b619e84b216052e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -92,11 +92,11 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 72
+  m_fontSize: 48.9
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 10
+  m_fontSizeMin: 8
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514
@@ -244,7 +244,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 123}
+  m_SizeDelta: {x: 797, y: 123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5267022040202902887
 CanvasRenderer:
@@ -419,7 +419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1182403889617129337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &637552220870299867
 CanvasRenderer:
@@ -467,8 +467,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5db6d59a0e2ab7044bf48d650dc363f8, type: 2}
-  m_sharedMaterial: {fileID: -6887115967754153296, guid: 5db6d59a0e2ab7044bf48d650dc363f8,
+  m_fontAsset: {fileID: 11400000, guid: 4631a32b2e49c4b43b619e84b216052e, type: 2}
+  m_sharedMaterial: {fileID: 6764924253355675598, guid: 4631a32b2e49c4b43b619e84b216052e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -494,11 +494,11 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 46.95
+  m_fontSize: 48.9
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 10
+  m_fontSizeMin: 8
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514

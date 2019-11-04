@@ -17,6 +17,8 @@ public class TimeManager : MonoBehaviour {
 
     public bool isRealtime = true;
     public bool useShortcut = false;
+    public bool useCustomStringFormat = true;
+    public string customStringFormat = "";
 
     [Header("Optional Countdown TextMeshPro")]
     public TextMeshProUGUI[] countDownTexts;
@@ -76,7 +78,8 @@ public class TimeManager : MonoBehaviour {
     {
         for (int t = 0; t < texts_.Length; t++)
         {
-            texts_[t].text = number.ToString();
+            if (useCustomStringFormat) texts_[t].text = number.ToString(customStringFormat);
+            else texts_[t].text = number.ToString();
         }
     }
 
