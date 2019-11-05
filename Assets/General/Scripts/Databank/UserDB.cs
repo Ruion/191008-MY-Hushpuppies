@@ -17,7 +17,7 @@ namespace DataBank{
         private string KEY_CONTACT = "contact"; // 3
         private string KEY_GAME_SCORE = "game_score"; // 7
         private string KEY_VOUCHER_ID = "voucher_id"; // 9
-		private string KEY_DATE = "register_datetime"; // 10
+		private string KEY_DATE = "created_at"; // 10
 		private string KEY_SYNC = "is_submitted"; // 11
 
         public List<string> columns = new List<string>();
@@ -164,7 +164,7 @@ namespace DataBank{
                 + user.contact + "', '"
                 + user.game_score + "', '"
                 + user.voucher_id + "', '"
-                + user.register_datetime + "', '"
+                + user.created_at + "', '"
                 + user.is_submitted + "' )";
 
             using (db_connection)
@@ -311,7 +311,7 @@ namespace DataBank{
                 entity.contact = reader[3].ToString();
                 entity.game_score = reader[4].ToString();
                 entity.voucher_id = reader[5].ToString();
-                entity.register_datetime = reader[6].ToString();
+                entity.created_at = reader[6].ToString();
                 entity.is_submitted = reader[7].ToString();
 
                 entities.Add(entity);
@@ -387,7 +387,7 @@ namespace DataBank{
                 entity.contact = reader[3].ToString();
                 entity.game_score = reader[8].ToString();
                 entity.voucher_id = reader[9].ToString();
-                entity.register_datetime = reader[10].ToString();
+                entity.created_at = reader[10].ToString();
                 entity.is_submitted = reader[11].ToString();
 
                 entities.Add(entity);

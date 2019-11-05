@@ -128,8 +128,7 @@ public class OnlineServerModel : ServerModelMaster
     {
         DoGetDataFromServer();
 
-        System.Reflection.MethodBase methodBase = System.Reflection.MethodBase.GetCurrentMethod();
-        Debug.Log(methodBase.Name + " : Fetching email");
+      //  Debug.Log(methodBase.Name + " : Fetching email");
         
         while (isFetchingData)
         {

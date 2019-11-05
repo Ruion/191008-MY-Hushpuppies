@@ -12,7 +12,7 @@ namespace DataBank
         public string contact;
         public string game_score;
         public string voucher_id;
-        public string register_datetime;
+        public string created_at;
         public string is_submitted;
 	}
 }

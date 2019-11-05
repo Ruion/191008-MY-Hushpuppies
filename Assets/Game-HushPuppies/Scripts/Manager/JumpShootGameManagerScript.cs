@@ -49,10 +49,9 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 
     public void AddScore(bool shoe = false)
     {
-        if (!shoe) scoreM.AddScore();
-        else scoreM.AddScoreShoe();
+        if (!shoe) { scoreM.AddScore(); audioM.PlayCoinSound(); }
+        else { scoreM.AddScoreShoe(); audioM.PlayShoeSound(); }
 
-        audioM.PlayCoinSound();
     }
 
 	public void Dead(){
@@ -74,7 +73,10 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		Time.timeScale = 1f;
 		newGround = groundHolder.transform.GetChild(0).gameObject;
 		newGroundScript = newGround.GetComponent<GroundScript>();
-		newGroundScript.velocity = 0;
+		//newGroundScript.velocity = 0;
+		newGroundScript.velocity /= 2;
+		newGroundScript.Stepped();
+        
 
 		player.transform.position = new Vector3(newGround.transform.position.x,newGround.transform.position.y+1,newGround.transform.position.z);
 		player.GetComponent<JumpShootPlayerScript>().RevivePlayer();

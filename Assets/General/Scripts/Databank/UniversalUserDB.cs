@@ -21,10 +21,15 @@ namespace DataBank
         private string KEY_GAME_SCORE = "game_score"; // 7
         private string KEY_GAME_RESULT = "game_result"; // 8
         private string KEY_VOUCHER_ID = "voucher_id"; // 9
-        private string KEY_DATE = "register_datetime"; // 10
+        private string KEY_DATE = "created_at"; // 10
         private string KEY_SYNC = "is_submitted"; // 11
 
         #endregion
+
+        private void Awake()
+        {
+            CreateTable();
+        }
 
         [ContextMenu("Create table")]
         public override void CreateTable()
@@ -198,11 +203,16 @@ namespace DataBank
                 for (int i = 0; i < col.Count; i++)
                 {
                     val[i] = col[i] + ((n+1).ToString());
-                    val[1] = "test00" + n.ToString() + "@gmail.com";
+                    val[1] = "test002" + n.ToString() + "@gmail.com";
                 }
                 
-                val[3] = n.ToString() + 10;
-                val[val.Count - 2] = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                val[2] = "+60145445" + (n+1)+n.ToString();
+                val[3] = n.ToString();
+                val[4] = "0000:00:00";
+                val[5] = "male";
+                val[6] = "lose";
+                val[7] = "200";
+                val[val.Count - 2] = System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
                 val[val.Count - 1] = "false";
 
                 AddData(col, val);
@@ -469,9 +479,13 @@ namespace DataBank
                     entity.name = reader[1].ToString();
                     entity.email = reader[2].ToString();
                     entity.contact = reader[3].ToString();
-                    entity.game_score = reader[4].ToString();
-                    entity.voucher_id = reader[5].ToString();
-                    entity.register_datetime = reader[6].ToString();
+                //    entity.age = reader[4].ToString();
+                //    entity.dob = reader[5].ToString();
+                //   entity.gender = reader[6].ToString();
+                    entity.game_result = reader[7].ToString();
+                    entity.game_score = reader[8].ToString();
+                    entity.created_at = reader[9].ToString();
+                    entity.is_submitted = reader[10].ToString();
                 }
 
                 entities.Add(entity);

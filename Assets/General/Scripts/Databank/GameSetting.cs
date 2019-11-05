@@ -61,6 +61,8 @@ public class Settings
     public string serverAddress = "http://192.168.0.28/honda/submit-data.php";
     public string serverGetDataAddress = "http://192.168.0.28/honda/submit-data.php";
     public int scoreToWin = 3;
+    public int scoreAddAmount = 10;
+    public int scoreShoeAddAmount = 15;
     public string userTypeName;
 
     public RewardType rewardType = RewardType.PrintVoucher;

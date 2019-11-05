@@ -42,7 +42,7 @@ public class UserServerModel : ServerModelMaster
 
         localEmailList = udb.GetAllUserEmail();
 
-        DoGetDataFromServer();
+      //  DoGetDataFromServer();
 
         udb.Close();
     }
@@ -140,15 +140,17 @@ public class UserServerModel : ServerModelMaster
             yield break;
         }
 
-        yield return StartCoroutine(CompareLocalAndServerData());
+        // CompareLocalAndServerData
+        /*   yield return StartCoroutine(CompareLocalAndServerData());
 
-        if (unSyncUsers == null || unSyncUsers.Count < 1)
-        {
-            Debug.Log("unsync users : " + unSyncUsers.Count);
-            HideAllHandler();
-            emptyHandler.SetActive(true);
-            yield break;
-        }
+           if (unSyncUsers == null || unSyncUsers.Count < 1)
+           {
+               Debug.Log("unsync users : " + unSyncUsers.Count);
+               HideAllHandler();
+               emptyHandler.SetActive(true);
+               yield break;
+           }
+           */
 
         Debug.Log("unsync users : " + unSyncUsers.Count);
 
@@ -162,6 +164,8 @@ public class UserServerModel : ServerModelMaster
             colToSend.Remove(gameSettings.sQliteDBSettings.columnsToSkipWhenSync[i]);
         }
 
+        Debug.Log("Start sync");
+
         for (int u = 0; u < unSyncUsers.Count; u++)
         {
             WWWForm form = new WWWForm();
@@ -170,9 +174,16 @@ public class UserServerModel : ServerModelMaster
             form.AddField("name", unSyncUsers[u].name);
             form.AddField("email", unSyncUsers[u].email);
             form.AddField("contact", unSyncUsers[u].contact);
-            form.AddField("game_score", unSyncUsers[u].game_score);
-            form.AddField("register_datetime", unSyncUsers[u].register_datetime);
 
+            form.AddField("age", "0");
+            form.AddField("dob", "0000-00-00");
+            form.AddField("gender", "0");
+
+            form.AddField("game_result", unSyncUsers[u].game_result);
+            form.AddField("game_score", unSyncUsers[u].game_score);
+            form.AddField("created_at", unSyncUsers[u].created_at);
+
+            Debug.Log(unSyncUsers[u].created_at);
           /*  for (int i = 0; i < colToSend.Count; i++)
             {
 
@@ -196,7 +207,8 @@ public class UserServerModel : ServerModelMaster
                     errorCodeText.text = www.error;
 
                     blockDataHandler.SetActive(false);
-
+                    Debug.LogError("try sync but server fail");
+                    Debug.LogError(www.error);
                     StopAllCoroutines();
                     yield break;
                 }
@@ -207,7 +219,7 @@ public class UserServerModel : ServerModelMaster
 
                     Debug.Log(www.downloadHandler.text);
 
-                    if (jsonData.result != "success")
+                    if (jsonData.result != "Success")
                     {
 
                         HideAllHandler();
@@ -217,6 +229,7 @@ public class UserServerModel : ServerModelMaster
                         blockDataHandler.SetActive(false);
 
                         StopAllCoroutines();
+                        Debug.LogError("try sync but fail");
                         yield break;
                     }
 

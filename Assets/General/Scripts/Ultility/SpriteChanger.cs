@@ -8,6 +8,6 @@ public class SpriteChanger : MonoBehaviour
 
     public virtual void ChangeSprite(int spriteIndex)
     {
-        GetComponent<SpriteRenderer>().sprite = sprites[spriteIndex];
+        GetComponentInChildren<SpriteRenderer>().sprite = sprites[spriteIndex];
     }
 }

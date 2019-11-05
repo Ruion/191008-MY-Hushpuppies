@@ -15,6 +15,10 @@ public class RandomProbabilitySpawner : MonoBehaviour
 
     public void Spawn()
     {
-        if (Random.value <= spawnProbability) Instantiate(prefab, transform);
+        float horizontalPos = Random.Range(-3.2f, 3.2f);
+        float verticalPos = 2f;
+        Vector2 position = new Vector2(transform.position.x + horizontalPos, transform.position.y + verticalPos);
+
+        if (Random.value <= spawnProbability) Instantiate(prefab, position, prefab.transform.rotation);
     }
 }

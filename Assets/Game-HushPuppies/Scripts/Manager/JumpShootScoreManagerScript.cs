@@ -8,14 +8,15 @@ public class JumpShootScoreManagerScript : GameSettingEntity {
 	public int totalScore = 0;
 	public TextMeshProUGUI totalScoreText;
 	public TextMeshProUGUI currentScoreText;
-	public TextMeshProUGUI bestScoreText;
-	public TextMeshProUGUI best;
 	public Animator animator;
     public ScriptableScore scoreCard;
 	[ReadOnly] public float bestScore;
 
     public int JumpAddScore = 10;
     public int CollectShoeAddScore = 15;
+
+    public Animator scoreTextGround;
+    public Animator scoreTextShoe;
 
     public string scoreName = "game_score";
 
@@ -38,7 +39,7 @@ public class JumpShootScoreManagerScript : GameSettingEntity {
         currentScore = scoreCard.score;
 		currentScoreText.text = currentScore.ToString();
 
-     //   animator.Play("1");
+        scoreTextGround.Play("scoreFadeUp", -1, 0);
 	}
 
     public void AddScoreShoe()
@@ -47,13 +48,11 @@ public class JumpShootScoreManagerScript : GameSettingEntity {
         currentScore = scoreCard.score;
         currentScoreText.text = currentScore.ToString();
 
-        animator.Play("1");
+        scoreTextShoe.Play("scoreFadeUp", -1, 0);
     }
 
 	public void ChangeColorToWhite(){
-		bestScoreText.color = Color.white;
 		currentScoreText.color = Color.white;
-		best.color = Color.white;
 	}
 
 }

@@ -23,10 +23,11 @@ public class FormValidator : ServerModelMaster
     public TMP_InputField NameText;
     public TMP_InputField PhoneText;
     public TMP_InputField EmailText;
+    public TMP_Dropdown contactDropdown;
 
     string MailPattern = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
 
-    string PhonePattern = @"^6?01\d{7,9}$";
+    string PhonePattern = @"^6?01\d{8,9}$";
 
     public GameObject emailWarning;
     public GameObject phoneWarning;
@@ -67,6 +68,7 @@ public class FormValidator : ServerModelMaster
 
     public void StartValidateOnFrequency()
     {
+        Debug.Log("Start validate");
         InvokeRepeating("Validate", 2f, validateFrequency);
     }
 
@@ -90,7 +92,9 @@ public class FormValidator : ServerModelMaster
 
     public void T2Change()
     {
-        Text2OK = Regex.IsMatch(PhoneText.text, PhonePattern);
+        string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
+        Text2OK = Regex.IsMatch(contact, PhonePattern);
+        if (!Text2OK) Debug.LogWarning("contact not correct : " + contact);
     }
 
     public void T3Change()
@@ -132,17 +136,20 @@ public class FormValidator : ServerModelMaster
     {
         bool hasSame = false;
 
-        if (ValidateDuplicate(emailList, EmailText))
+        if (EmailText.text != "")
         {
-            emailWarning.SetActive(true);
-            hasSame = true;
-         //   Debug.Log("email not unique");
-        }
-        else
-        {
-            emailWarning.SetActive(false);
-            hasSame = false;
-            
+            if (ValidateDuplicate(emailList, EmailText.text))
+            {
+                emailWarning.SetActive(true);
+                hasSame = true;
+                //   Debug.Log("email not unique");
+            }
+            else
+            {
+                emailWarning.SetActive(false);
+                hasSame = false;
+
+            }
         }
 
         return hasSame;
@@ -152,27 +159,30 @@ public class FormValidator : ServerModelMaster
     {
         bool hasSame = false;
 
-        if (ValidateDuplicate(contactList, PhoneText))
+        if (PhoneText.text != "")
         {
-            phoneWarning.SetActive(true);
-            hasSame = true;
-          //  Debug.Log("phone not unique");
-        }
-        else
-        {
-            phoneWarning.SetActive(false);
-            hasSame = false;
-            
+            if (ValidateDuplicate(contactList, contactDropdown.value + PhoneText.text))
+            {
+                phoneWarning.SetActive(true);
+                hasSame = true;
+                //  Debug.Log("phone not unique");
+            }
+            else
+            {
+                phoneWarning.SetActive(false);
+                hasSame = false;
+
+            }
         }
 
         return hasSame;
     }
 
-    private bool ValidateDuplicate(List<string> source, TMP_InputField text_)
+    private bool ValidateDuplicate(List<string> source, string text_)
     {
         bool hasSame = false;
 
-        string same = source.FirstOrDefault(t => t == text_.text);
+        string same = source.FirstOrDefault(t => t == text_);
         if (same != null) hasSame = true;
 
         return hasSame;

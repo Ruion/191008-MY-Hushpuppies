@@ -28,7 +28,7 @@ public class PlayerPrefsSaver : MonoBehaviour
 
     public void SaveDateTime()
     {
-        PlayerPrefs.SetString(name_, System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        PlayerPrefs.SetString(name_, System.DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss"));
     }
 }
 

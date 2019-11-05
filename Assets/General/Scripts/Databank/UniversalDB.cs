@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
 using System;
-using System.Reflection;
 
 namespace DataBank
 {
@@ -64,8 +63,7 @@ namespace DataBank
 
             dbcmd.CommandText += ";";
 
-            MethodBase methodBase = MethodBase.GetCurrentMethod();
-            Debug.Log(methodBase.Name + " : " +dbcmd.CommandText);
+          //  Debug.Log(methodBase.Name + " : " +dbcmd.CommandText);
 
             IDataReader reader = dbcmd.ExecuteReader();
 

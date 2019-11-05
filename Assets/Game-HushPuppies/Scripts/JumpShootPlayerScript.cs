@@ -167,7 +167,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
 	}
 
 	void DeadCheck(){
-		if(isDead == false && Camera.main.transform.position.y - transform.position.y > 10f){
+		if(isDead == false && Camera.main.transform.position.y - transform.position.y > 8f){
             isDead = true;
             StopPlayer();
         //	GameObject.Find("_GameManager").GetComponent<JumpShootGameManagerScript>().Dead();

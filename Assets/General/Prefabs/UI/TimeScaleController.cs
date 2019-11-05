@@ -7,6 +7,11 @@ public class TimeScaleController : GameSettingEntity
 {
     public Slider slider;
 
+    private void OnEnable()
+    {
+        if (!gameSettings.DebugMode) gameObject.SetActive(false);
+    }
+
     public void ChangeTimeScale()
     {
         Time.timeScale = slider.value;

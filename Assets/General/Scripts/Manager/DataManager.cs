@@ -98,7 +98,7 @@ public class DataManager : GameSettingEntity {
                 + " contact : " + e.contact 
                 + " game_score : " + e.game_score 
                 + " voucher_id : " + e.voucher_id 
-                + " register_datetime : " + e.register_datetime);
+                + " created_at : " + e.created_at);
 
             Debug.Log(n + " Game score : " + e.game_score);
         }
@@ -119,7 +119,7 @@ public class DataManager : GameSettingEntity {
          SavePlayerTemporary("contact", contactInput.text.ToString());
          SavePlayerTemporary("game_score", contactInput.text.ToString());
          SavePlayerTemporary("voucher_id", contactInput.text.ToString());
-         SavePlayerTemporary("register_datetime", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+         SavePlayerTemporary("created_at", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void SaveScoreToLocal()
@@ -134,7 +134,7 @@ public class DataManager : GameSettingEntity {
      col.Add("contact");
      col.Add("game_score");
      col.Add("voucher_id");
-     col.Add("register_datetime");
+     col.Add("created_at");
      col.Add("is_submitted");
 
      val.Add(PlayerPrefs.GetString("name"));
@@ -143,7 +143,7 @@ public class DataManager : GameSettingEntity {
      val.Add(PlayerPrefs.GetString(gameSettings.scoreName));
    //  val.Add(PlayerPrefs.GetString("voucher_id"));
      val.Add(2.ToString());
-     val.Add(PlayerPrefs.GetString("register_datetime"));
+     val.Add(PlayerPrefs.GetString("created_at"));
      val.Add("false");
 
         // string msg = userDb.AddData(user);
@@ -175,7 +175,7 @@ public class DataManager : GameSettingEntity {
              user.email = "p" + i.ToString() + "@gmail.com";
              user.contact = "01" + i.ToString() + "2244213";
              user.game_score = 499.ToString();
-             user.register_datetime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+             user.created_at = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
              user.voucher_id = 2.ToString();
              user.is_submitted = "false";
 
@@ -303,7 +303,7 @@ public class DataManager : GameSettingEntity {
       //      form.AddField("game_result", unSyncUsers[i].game_result); // 7
             form.AddField("game_score", unSyncUsers[i].game_score); // 8
             form.AddField("voucher_id", unSyncUsers[i].voucher_id); // 9
-            form.AddField("register_datetime", unSyncUsers[i].register_datetime); // 10
+            form.AddField("created_at", unSyncUsers[i].created_at); // 10
 
             using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverAddress, form))
             {

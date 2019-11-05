@@ -30,7 +30,7 @@ public class SqliteController : GameSettingEntity
             entity.email = reader[2].ToString();
             entity.contact = reader[3].ToString();
             entity.game_score = reader[4].ToString();
-            entity.register_datetime = reader[5].ToString();
+            entity.created_at = reader[5].ToString();
             entity.is_submitted = reader[6].ToString();
 
             GameObject newR = Instantiate(prefab, list);
@@ -50,7 +50,7 @@ public class SqliteController : GameSettingEntity
             scoreT.text = entity.game_score;
 
             TextMeshProUGUI registerT = newR.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-            registerT.text = entity.register_datetime;
+            registerT.text = entity.created_at;
 
             TextMeshProUGUI syncT = newR.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
             syncT.text = entity.is_submitted;
