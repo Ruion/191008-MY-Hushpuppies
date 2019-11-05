@@ -37,12 +37,17 @@ public class UserServerModel : ServerModelMaster
     private void Start()
     {
         HideAllHandler();
+    }
 
+    public void StartUp()
+    {
         SetUpDb();
 
-        localEmailList = udb.GetAllUserEmail();
+        #region Function for compare data with server - DISABLED
+        // localEmailList = udb.GetAllUserEmail();
 
-      //  DoGetDataFromServer();
+        //  DoGetDataFromServer();
+        #endregion
 
         udb.Close();
     }
@@ -72,13 +77,6 @@ public class UserServerModel : ServerModelMaster
         loadingHandler.SetActive(false);
         successSendDataHandler.SetActive(false);
         blockDataHandler.SetActive(false);
-    }
-
-    public void ClearData()
-    {
-        SetUpDb();
-        udb.DeleteAllData();
-        udb.Close();
     }
 
     #region Save Data
@@ -118,6 +116,8 @@ public class UserServerModel : ServerModelMaster
 
         blockDataHandler.SetActive(true);
 
+        #region Check Internet
+        ///////////// CHECK Internet Connection /////////////
         string HtmlText = GetHtmlFromUri("http://google.com");
         if (HtmlText == "")
         {
@@ -125,7 +125,9 @@ public class UserServerModel : ServerModelMaster
             internetErrorHandler.SetActive(true);
             yield break;
         }
+        #endregion
 
+        #region Get unsync data & compare with online server
         // Get unSync user
         unSyncUsers = new List<UniversalUserEntity>();
 
@@ -140,7 +142,7 @@ public class UserServerModel : ServerModelMaster
             yield break;
         }
 
-        // CompareLocalAndServerData
+        // CompareLocalAndServerData // Temporary Disable 
         /*   yield return StartCoroutine(CompareLocalAndServerData());
 
            if (unSyncUsers == null || unSyncUsers.Count < 1)
@@ -151,11 +153,14 @@ public class UserServerModel : ServerModelMaster
                yield break;
            }
            */
+        #endregion
 
         Debug.Log("unsync users : " + unSyncUsers.Count);
 
         totalSent = 0;
 
+        #region using Reflection to send data but DISABLED FOR VERY SLOW 
+        /*
         List<string> colToSend = new List<string>();
         colToSend.AddRange(gameSettings.sQliteDBSettings.columns);
 
@@ -163,7 +168,10 @@ public class UserServerModel : ServerModelMaster
         {
             colToSend.Remove(gameSettings.sQliteDBSettings.columnsToSkipWhenSync[i]);
         }
+        */
+        #endregion
 
+        #region WWWForm & UnityWebRequest send data
         Debug.Log("Start sync");
 
         for (int u = 0; u < unSyncUsers.Count; u++)
@@ -184,16 +192,19 @@ public class UserServerModel : ServerModelMaster
             form.AddField("created_at", unSyncUsers[u].created_at);
 
             Debug.Log(unSyncUsers[u].created_at);
-          /*  for (int i = 0; i < colToSend.Count; i++)
-            {
 
-                form.AddField(colToSend[i],
-                    unSyncUsers[u].GetType()
-                    .GetField(colToSend[i])
-                    .GetValue(unSyncUsers[u])
-                    .ToString());
-            }
-        */
+            #region Reflection to send object data but SLOW
+            /*  for (int i = 0; i < colToSend.Count; i++)
+              {
+
+                  form.AddField(colToSend[i],
+                      unSyncUsers[u].GetType()
+                      .GetField(colToSend[i])
+                      .GetValue(unSyncUsers[u])
+                      .ToString());
+              }
+          */
+            #endregion
 
             using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverAddress, form))
             {
@@ -245,6 +256,7 @@ public class UserServerModel : ServerModelMaster
 
             yield return new WaitForSeconds(0.1f);
         }
+        #endregion
 
         udb.Close();
 
@@ -253,29 +265,12 @@ public class UserServerModel : ServerModelMaster
 
     #endregion
 
-    [ContextMenu("ShowAll")]
-    public void ShowAll()
-    {
-        SetUpDb();
-        IDataReader reader = udb.GetAllData();
-        while (reader.Read())
-        {
-            string text = "";
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                text += reader[i] + " ";
-            }
-            Debug.Log(text);
-        }
-    }
-
     #region Get Server Data
     [ContextMenu("GetServerData")]
     public void DoGetDataFromServer()
     {
         StartCoroutine(GetDataFromServer());
     }
-
     
     // to be configure
     IEnumerator GetDataFromServer()

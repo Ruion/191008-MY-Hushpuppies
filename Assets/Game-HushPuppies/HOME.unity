@@ -991,6 +991,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1523002276}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &640608844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1523002276}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44f7561f2d73b64e88d2d64b0a72cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &672953469 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 196816157643012675, guid: 3b4d50dd24c7255459098612e26d6ee2,
@@ -2029,6 +2041,191 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.DebugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.fileName
+      value: game_hushpuppies
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.serverAddress
+      value: http://191008-my-hush-puppies.unicom-interactive-digital.com/api/submit-player-data
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.serverGetDataAddress
+      value: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.scoreToWin
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.userTypeName
+      value: DataBank.UniversalUserEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.dbName
+      value: user_db_hushpuppies
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.tableName
+      value: user
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.UniversalUserClassName
+      value: DataBank.UniversalUserEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[0]
+      value: id
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[1]
+      value: name
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[2]
+      value: email
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[3]
+      value: contact
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[4]
+      value: age
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[5]
+      value: dob
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[6]
+      value: gender
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[7]
+      value: game_result
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[8]
+      value: game_score
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[9]
+      value: created_at
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[10]
+      value: is_submitted
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[0]
+      value: INTEGER PRIMARY KEY
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[1]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[2]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[3]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[4]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[5]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[6]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[7]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[8]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[9]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[10]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.data[0]
+      value: id
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.data[1]
+      value: is_submitted
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.data[2]
+      value: voucher_id
+      objectReference: {fileID: 0}
     - target: {fileID: 440392878538229223, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive
@@ -2037,7 +2234,7 @@ PrefabInstance:
     - target: {fileID: 5027133472231012648, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 218756497835719420, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -5296,8 +5493,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2678962261628774102, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678962261628774102, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678962261628774102, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678962261628774102, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678962261628774102, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 640608844}
+    - target: {fileID: 2678962261628774102, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678962261628774102, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9217975157812542443, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -5313,191 +5540,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: -328.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.DebugMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.fileName
-      value: game_hushpuppies
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.serverAddress
-      value: http://191008-my-hush-puppies.unicom-interactive-digital.com/api/submit-player-data
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.serverGetDataAddress
-      value: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.scoreToWin
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.userTypeName
-      value: DataBank.UniversalUserEntity
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.dbName
-      value: user_db_hushpuppies
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.tableName
-      value: user
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.UniversalUserClassName
-      value: DataBank.UniversalUserEntity
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[0]
-      value: id
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[1]
-      value: name
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[2]
-      value: email
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[3]
-      value: contact
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[4]
-      value: age
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[5]
-      value: dob
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[6]
-      value: gender
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[7]
-      value: game_result
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[8]
-      value: game_score
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[9]
-      value: created_at
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[10]
-      value: is_submitted
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[0]
-      value: INTEGER PRIMARY KEY
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[1]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[2]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[3]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[4]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[5]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[6]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[7]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[8]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[9]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[10]
-      value: TEXT
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.data[0]
-      value: id
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.data[1]
-      value: is_submitted
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549791382132560683, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.data[2]
-      value: voucher_id
       objectReference: {fileID: 0}
     - target: {fileID: 2157771200673212039, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -5619,6 +5661,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 218756498863161201, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 94c74c48cd5f8e342be37390e89fd32a, type: 3}
+    - target: {fileID: 218756497757872847, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 218756498873341450, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: password
+      value: puppyboss
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 218756497457966200, guid: 3b4d50dd24c7255459098612e26d6ee2, type: 3}
@@ -5878,7 +5935,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 0
+  hasOnComplete: 1
   hasOnTweenCreated: 0
   hasOnRewind: 0
   onStart:
@@ -5895,7 +5952,18 @@ MonoBehaviour:
       m_Calls: []
   onComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1917992769}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTweenCreated:
     m_PersistentCalls:
       m_Calls: []
@@ -5936,7 +6004,7 @@ MonoBehaviour:
   loops: 1
   id: 
   isRelative: 0
-  isFrom: 0
+  isFrom: 1
   isIndependentUpdate: 0
   autoKill: 1
   isActive: 1
@@ -5947,7 +6015,7 @@ MonoBehaviour:
   forcedTargetType: 0
   autoPlay: 1
   useTargetAsV3: 0
-  endValueFloat: 1
+  endValueFloat: 0
   endValueV3: {x: 0, y: 0, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
@@ -6296,7 +6364,7 @@ Transform:
   m_GameObject: {fileID: 1897784018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 50, y: 50, z: 1}
+  m_LocalScale: {x: 2, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 37460736}
   m_RootOrder: 0
@@ -6371,7 +6439,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917992769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
   m_Name: 
@@ -6498,7 +6566,7 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917992769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -6624,27 +6692,16 @@ MonoBehaviour:
   onComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2043298400}
-        m_MethodName: DOPlayBackwards
-        m_Mode: 1
+      - m_Target: {fileID: 1541020850}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1917992770}
-        m_MethodName: DOPlay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   onTweenCreated:
     m_PersistentCalls:

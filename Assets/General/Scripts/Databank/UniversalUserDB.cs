@@ -24,6 +24,7 @@ namespace DataBank
         private string KEY_DATE = "created_at"; // 10
         private string KEY_SYNC = "is_submitted"; // 11
 
+        public int TestIndex = 5;
         #endregion
 
         private void Awake()
@@ -203,10 +204,10 @@ namespace DataBank
                 for (int i = 0; i < col.Count; i++)
                 {
                     val[i] = col[i] + ((n+1).ToString());
-                    val[1] = "test002" + n.ToString() + "@gmail.com";
+                    val[1] = "test00" + TestIndex.ToString() + n.ToString() + "@gmail.com";
                 }
                 
-                val[2] = "+60145445" + (n+1)+n.ToString();
+                val[2] = "+60145445" + (n+TestIndex)+n.ToString();
                 val[3] = n.ToString();
                 val[4] = "0000:00:00";
                 val[5] = "male";
@@ -217,6 +218,8 @@ namespace DataBank
 
                 AddData(col, val);
             }
+
+            TestIndex++;
 
             Close();
         }
