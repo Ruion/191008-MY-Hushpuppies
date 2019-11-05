@@ -51,6 +51,8 @@ namespace DataBank
 
         public virtual List<string> GetDataByStringToList(string singleColumnName, string conditionlowercase = "", string str = "")
         {
+            
+
             ConnectDbCustom();
 
             IDbCommand dbcmd = GetDbCommand();
@@ -62,7 +64,8 @@ namespace DataBank
 
             dbcmd.CommandText += ";";
 
-            Debug.Log(dbcmd.CommandText);
+            MethodBase methodBase = MethodBase.GetCurrentMethod();
+            Debug.Log(methodBase.Name + " : " +dbcmd.CommandText);
 
             IDataReader reader = dbcmd.ExecuteReader();
 

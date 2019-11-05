@@ -19,7 +19,7 @@ TagManager:
   - CharacterSelectController
   - Camera
   - GameSettingMaster
-  - LicenseKey
+  - Shoe
   layers:
   - Default
   - TransparentFX

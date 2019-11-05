@@ -320,7 +320,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4324381687631738}
-  - component: {fileID: 114155463456624394}
+  - component: {fileID: 2681817682022592425}
+  - component: {fileID: 5624428842187860197}
   m_Layer: 0
   m_Name: User Db Model
   m_TagString: Untagged
@@ -343,7 +344,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114155463456624394
+--- !u!114 &2681817682022592425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,7 +353,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1305985105367576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3988159d2933b154f97b2bea4fa580a7, type: 3}
+  m_Script: {fileID: 11500000, guid: a6bea48c3ea555242907993c74fb4b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSettings:
+    fileName: game_hush
+    scoreName: game_score
+    serverAddress: http://192.168.0.28/honda/submit-data.php
+    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
+    scoreToWin: 3
+    userTypeName: 
+    rewardType: 0
+    sQliteDBSettings:
+      dbName: db_
+      tableName: registration
+      UniversalUserClassName: DataBank.
+      columns: []
+      attributes: []
+      columnsToSkipWhenSync: []
+  db_connection_string: 
+  numberToPopulate: 10
+--- !u!114 &5624428842187860197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305985105367576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44f7561f2d73b64e88d2d64b0a72cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
@@ -370,10 +400,6 @@ MonoBehaviour:
       columns: []
       attributes: []
       columnsToSkipWhenSync: []
-  nameInput: {fileID: 0}
-  emailInput: {fileID: 0}
-  contactInput: {fileID: 0}
-  numberToPopulate: 100
   sentText: {fileID: 870525141}
   emptyHandler: {fileID: 366404679950319145}
   internetErrorHandler: {fileID: 6829932019406070344}
@@ -382,12 +408,8 @@ MonoBehaviour:
   loadingHandler: {fileID: 391561522}
   successSendDataHandler: {fileID: 3909457759572461995}
   blockDataHandler: {fileID: 391561522}
-  localNotSaveHandler: {fileID: 4986357583004291758}
-  localScoreNotSaveHandler: {fileID: 3162602345510017065}
-  localNotSaveCodeText: {fileID: 5874555235708942442}
-  oldUser: []
-  serverUsers: []
-  unSyncUsers: []
+  localEmailList: []
+  emailList: []
 --- !u!1 &366404679950319145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,6 +3211,8 @@ MonoBehaviour:
   initialSecond: 0
   isRealtime: 1
   useShortcut: 0
+  useCustomStringFormat: 1
+  customStringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:
@@ -4035,6 +4059,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4760268036684018234, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
         type: 3}
       propertyPath: m_text
@@ -4084,11 +4113,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760268036684018234, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 7.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f64134ecc634be4bbcab1c212601dac, type: 3}
@@ -5093,6 +5117,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4760268036684018234, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
         type: 3}
       propertyPath: m_text
@@ -5132,11 +5161,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.wordCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760268036684018234, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f64134ecc634be4bbcab1c212601dac, type: 3}
