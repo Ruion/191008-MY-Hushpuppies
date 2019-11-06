@@ -75,7 +75,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		if(initialCollide == false){
 			if(groundScriptComponent.GetStepped() == false){
 
-                if (groundScriptComponent.groundType == GroundScript.GroundType.Shoe) { jsGM.AddScore(true); Destroy(groundScriptComponent.transform.GetChild(0).gameObject); }
+                if (groundScriptComponent.groundType == GroundScript.GroundType.Shoe) { jsGM.AddScore(true); Destroy(groundScriptComponent.transform.GetChild(0).gameObject); shoeEffectParticle.Play(); }
                 else jsGM.AddScore();
 
                 groundScriptComponent.Stepped();
@@ -95,17 +95,6 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		}
     }
 
-    /*
-    void OnTriggerEnter2D(Collider2D target)
-    {
-        if(target.gameObject.tag == "Shoe")
-        {
-            jsGM.AddScore(true);
-            Destroy(target.gameObject, 0.02f);
-            shoeEffectParticle.Play();
-        }
-    }
-    */
     IEnumerator OnCollisionExit2D(Collision2D target){
 
         if (!gameObject.activeSelf) { StopAllCoroutines(); yield break; }

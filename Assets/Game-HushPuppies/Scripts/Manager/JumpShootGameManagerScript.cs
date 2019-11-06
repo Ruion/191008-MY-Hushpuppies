@@ -30,11 +30,18 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		backgroundMusic = GameObject.Find("_BackgroundMusic").GetComponent<AudioSource>();
 	}
 
+    /*
 	void Update(){
 		if (JumpShootGameManagerScript.gameState == GameState.Menu && Input.GetMouseButtonDown(0)){
 			StartCoroutine(StartGame());
 		}
 	}
+    */
+
+    public void DoStartGame()
+    {
+        StartCoroutine(StartGame());
+    }
 
 	IEnumerator StartGame(){
 
@@ -73,7 +80,7 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		newGroundScript.velocity /= 2;
 		newGroundScript.Stepped();
         if (newGroundScript.groundType == GroundScript.GroundType.Shoe) { 
-           if(newGround.transform.GetChild(0) != null) Destroy(newGround.transform.GetChild(0).gameObject);
+           if(newGround.transform.GetChild(0).GetComponent<SpriteChangerRandom>() != null) Destroy(newGround.transform.GetChild(0).gameObject);
 
         }
 

@@ -23,6 +23,7 @@ public class KeyboardScript : MonoBehaviour
         set
         {
             inputFieldTMPro = value;
+            inputFieldTMPro.onFocusSelectAll = false;
         }
     }
 
@@ -38,31 +39,28 @@ public class KeyboardScript : MonoBehaviour
         {
             int out_;
             if (!int.TryParse(alphabet, out out_)) canType = false;
-            // if(int.TryParse(alphabet, out out_)) inputFieldTMPro.text += alphabet;
 
         }
 
-        
         if (canType)
         {
-            inputFieldTMPro.text += alphabet; // SAFE
-            /*
+         //   inputFieldTMPro.text += alphabet; // SAFE
+            
+            
             if (!SelectionFocus())
             {
-                inputFieldTMPro.stringPosition += alphabet.Length;
                inputFieldTMPro.text = inputFieldTMPro.text.Insert(inputFieldTMPro.stringPosition, alphabet);
-                
-
+               inputFieldTMPro.stringPosition += alphabet.Length;
             }
             else
             {
                 RemoveSelectionTexts();
-                inputFieldTMPro.stringPosition += alphabet.Length;
                 inputFieldTMPro.text = inputFieldTMPro.text.Insert(inputFieldTMPro.stringPosition, alphabet);
-                
+                inputFieldTMPro.stringPosition += alphabet.Length;
             }
-            */
+            
         }
+        inputFieldTMPro.Select();
     }
 
     public void BackSpace()
@@ -71,11 +69,9 @@ public class KeyboardScript : MonoBehaviour
 
         clickSound.Play();
 
-         if (inputFieldTMPro.text.Length>0) inputFieldTMPro.text= inputFieldTMPro.text.Remove(inputFieldTMPro.text.Length-1);
+       //  if (inputFieldTMPro.text.Length>0) inputFieldTMPro.text= inputFieldTMPro.text.Remove(inputFieldTMPro.text.Length-1); // SAFE
 
-        
-
-        /*
+         
         int cutPos = inputFieldTMPro.stringPosition - 1;
 
         if (!SelectionFocus())
@@ -89,9 +85,9 @@ public class KeyboardScript : MonoBehaviour
         {
             RemoveSelectionTexts();
         }
-        */
+        
 
-       // inputFieldTMPro.Select();
+        inputFieldTMPro.Select();
         //  if (inputFieldTMPro.stringPosition <= 0) inputFieldTMPro.MoveTextEnd(false);
 
     }

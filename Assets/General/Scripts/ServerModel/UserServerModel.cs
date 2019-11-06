@@ -23,6 +23,9 @@ public class UserServerModel : ServerModelMaster
     public GameObject loadingHandler;
     public GameObject successSendDataHandler;
     public GameObject blockDataHandler;
+    public GameObject successBar;
+    public TextMeshProUGUI successText;
+    public GameObject failBar;
 
     private UniversalUserDB udb;
     #endregion
@@ -107,13 +110,40 @@ public class UserServerModel : ServerModelMaster
     [ContextMenu("Sync")]
     public void SendDataToDatabase()
     {
+        HideAllHandler();
+        GetUnSyncData(false);
         StartCoroutine(DataToSend());
     }
 
-    IEnumerator DataToSend()
+    [ContextMenu("AutoSync")]
+    public void AutoSendDataToDatabase()
     {
         HideAllHandler();
+        GetUnSyncData(true);
+        StartCoroutine(DataToSend());
+    }
 
+    private void GetUnSyncData(bool limit = false)
+    {
+        // Get unSync user
+        unSyncUsers = new List<UniversalUserEntity>();
+
+        SetUpDb();
+        
+        if (limit) unSyncUsers = udb.GetAllUnSyncUserLimit();
+        else unSyncUsers = udb.GetAllUnSyncUser();
+
+        if (unSyncUsers == null || unSyncUsers.Count < 1)
+        {
+            Debug.Log("unsync users : " + unSyncUsers.Count);
+            HideAllHandler();
+            emptyHandler.SetActive(true);
+            return;
+        }
+    }
+
+    IEnumerator DataToSend()
+    { 
         blockDataHandler.SetActive(true);
 
         #region Check Internet
@@ -127,20 +157,7 @@ public class UserServerModel : ServerModelMaster
         }
         #endregion
 
-        #region Get unsync data & compare with online server
-        // Get unSync user
-        unSyncUsers = new List<UniversalUserEntity>();
-
-        SetUpDb();
-        unSyncUsers = udb.GetAllUnSyncUser();
-
-        if (unSyncUsers == null || unSyncUsers.Count < 1)
-        {
-            Debug.Log("unsync users : " + unSyncUsers.Count);
-            HideAllHandler();
-            emptyHandler.SetActive(true);
-            yield break;
-        }
+        #region Compare with online server
 
         // CompareLocalAndServerData // Temporary Disable 
         /*   yield return StartCoroutine(CompareLocalAndServerData());
@@ -221,6 +238,10 @@ public class UserServerModel : ServerModelMaster
                     Debug.LogError("try sync but server fail");
                     Debug.LogError(www.error);
                     StopAllCoroutines();
+
+                    // show red bar on fail
+                    failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
+
                     yield break;
                 }
                 else
@@ -241,6 +262,10 @@ public class UserServerModel : ServerModelMaster
 
                         StopAllCoroutines();
                         Debug.LogError("try sync but fail");
+
+                        // show red bar on fail
+                        failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
+
                         yield break;
                     }
 
@@ -248,6 +273,8 @@ public class UserServerModel : ServerModelMaster
 
                     totalSent++;
                     sentText.text = totalSent.ToString();
+                    successText.text = sentText.text;
+                    successBar.SetActive(true);
 
                     udb.UpdateSyncUser(unSyncUsers[u]);
                     successSendDataHandler.SetActive(true);
@@ -259,6 +286,8 @@ public class UserServerModel : ServerModelMaster
         #endregion
 
         udb.Close();
+        successBar.GetComponent<StatusBar>().Finish();
+        failBar.GetComponent<StatusBar>().Finish();
 
         blockDataHandler.SetActive(false);
     }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class AdminValidation : MonoBehaviour
 {
     public string password = "hondaBoss";
-    public InputField passwordInput;
+    public TMPro.TMP_InputField passwordInput;
 
     public UnityEvent OnPasswordCorrect;
 

@@ -20,6 +20,8 @@ public class EventConditional : GameSettingEntity {
 
 	public void ExecuteScriptableScoreCondition()
     {
+        LoadGameSettingFromMaster();
+
         for (int i = 0; i < scriptableScoreCard.Length; i++)
         {
             if (useGameSettingMinimumScore)

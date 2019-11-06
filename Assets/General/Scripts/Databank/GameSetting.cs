@@ -65,8 +65,6 @@ public class Settings
     public int scoreShoeAddAmount = 15;
     public string userTypeName;
 
-    public RewardType rewardType = RewardType.PrintVoucher;
-
     public SQliteDBSettings sQliteDBSettings;
 
     public Settings(Settings setting)
@@ -77,6 +75,8 @@ public class Settings
         serverAddress = setting.serverAddress;
         serverGetDataAddress = setting.serverGetDataAddress;
         scoreToWin = setting.scoreToWin;
+        scoreAddAmount = setting.scoreAddAmount;
+        scoreShoeAddAmount = setting.scoreShoeAddAmount;
         userTypeName = setting.userTypeName;
 
         sQliteDBSettings = setting.sQliteDBSettings;

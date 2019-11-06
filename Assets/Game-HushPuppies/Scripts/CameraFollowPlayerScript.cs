@@ -19,8 +19,11 @@ public class CameraFollowPlayerScript : MonoBehaviour {
 	}
 
 	void Follow(){
+
+        if (player == null) return;
+
 		Vector2 targetPosition = new Vector2(0, player.transform.position.y + yOffSet);
-	//	if(targetPosition.y < transform.position.y) return;
+		if(targetPosition.y < transform.position.y) return;
 
 		transform.position = Vector2.SmoothDamp(transform.position,targetPosition,ref velocity,smooth);
 		transform.position = new Vector3(transform.position.x,transform.position.y,-10);

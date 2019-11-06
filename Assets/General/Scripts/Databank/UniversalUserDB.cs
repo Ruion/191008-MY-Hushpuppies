@@ -243,13 +243,6 @@ namespace DataBank
             {
                 dbcmd2.CommandText += columns_[c] + " = '";
             }
-
-            /*
-            foreach (string c in columns_)
-            {
-                dbcmd2.CommandText += c + " = '";
-            }
-            */
             
             for (int v = 0; v < values_.Count; v++)
             {
@@ -257,15 +250,6 @@ namespace DataBank
 
                 else dbcmd2.CommandText += values_[v] + "'";
             }
-
-            /*
-            foreach (string v in values_)
-            {
-                if (values_.IndexOf(v) != values_.Count - 1) dbcmd2.CommandText += v + "' ,";
-
-                else dbcmd2.CommandText += v + "'";
-            }
-            */
 
             dbcmd2.CommandText += " WHERE ";
             dbcmd2.CommandText += conditions + " ;";
@@ -285,6 +269,7 @@ namespace DataBank
             Close();
         }
 
+        #region Get Data
         public override IDataReader GetDataById(int id)
         {
             return base.GetDataById(id);
@@ -300,32 +285,21 @@ namespace DataBank
                 "SELECT * FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + conditionlowercase + " = '" + str + "'";
             return dbcmd.ExecuteReader();
         }
-       
-        public override void DeleteDataByString(string id)
+
+        public IDataReader GetDataByStringLimit(string conditionlowercase, string str, int limitNumber)
         {
-            Debug.Log(CodistanTag + "Deleting Location: " + id);
+            ConnectDbCustom();
+            Debug.Log(CodistanTag + "Getting data: " + conditionlowercase + " " + str);
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
-                "DELETE FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + KEY_CONTACT + " = '" + id + "'";
-            dbcmd.ExecuteNonQuery();
+                "SELECT * FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + conditionlowercase + " = '" + str + "' LIMIT " + limitNumber.ToString();
+            return dbcmd.ExecuteReader();
         }
 
-        public override void DeleteDataById(int id)
-        {
-            base.DeleteDataById(id);
-        }
+        #endregion
 
-        public override void DeleteAllData()
-        {
-            Debug.Log(CodistanTag + "Deleting Table");
 
-            ConnectDbCustom();
-
-            base.DeleteAllData(gameSettings.sQliteDBSettings.tableName);
-
-            Close();
-        }
 
         [ContextMenu("GetAllData")]
         public override IDataReader GetAllData()
@@ -499,7 +473,44 @@ namespace DataBank
             return entities;
         }
 
-        public void UpdateSyncUser(UniversalUserEntity userEntity)
+        [ContextMenu("Get10Unsync")]
+        public List<UniversalUserEntity> GetAllUnSyncUserLimit()
+        {
+            List<UniversalUserEntity> entities = new List<UniversalUserEntity>();
+
+            ConnectDbCustom();
+
+            IDataReader reader = GetDataByStringLimit(KEY_SYNC, "false", 10);
+             Debug.Log("Reader fieldCount : " + reader.FieldCount);
+
+            while (reader.Read())
+            {
+                UniversalUserEntity entity = new UniversalUserEntity();
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    // Debug.Log("Index i : " + i);
+                    entity.name = reader[1].ToString();
+                    entity.email = reader[2].ToString();
+                    entity.contact = reader[3].ToString();
+                    //    entity.age = reader[4].ToString();
+                    //    entity.dob = reader[5].ToString();
+                    //   entity.gender = reader[6].ToString();
+                    entity.game_result = reader[7].ToString();
+                    entity.game_score = reader[8].ToString();
+                    entity.created_at = reader[9].ToString();
+                    entity.is_submitted = reader[10].ToString();
+                }
+
+                entities.Add(entity);
+            }
+
+            Close();
+
+            return entities;
+        }
+
+
+      public void UpdateSyncUser(UniversalUserEntity userEntity)
         {
             List<string> col = new List<string>();
             List<string> con = new List<string>();
@@ -517,10 +528,40 @@ namespace DataBank
 
          }
 
+        #region Delete Data
+
         public override void DeleteAllData(string table_name)
         {
             ConnectDbCustom();
             base.DeleteAllData(table_name);
         }
+
+        public override void DeleteDataByString(string id)
+        {
+            Debug.Log(CodistanTag + "Deleting Location: " + id);
+
+            IDbCommand dbcmd = GetDbCommand();
+            dbcmd.CommandText =
+                "DELETE FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + KEY_CONTACT + " = '" + id + "'";
+            dbcmd.ExecuteNonQuery();
+        }
+
+        public override void DeleteDataById(int id)
+        {
+            base.DeleteDataById(id);
+        }
+
+        public override void DeleteAllData()
+        {
+            Debug.Log(CodistanTag + "Deleting Table");
+
+            ConnectDbCustom();
+
+            base.DeleteAllData(gameSettings.sQliteDBSettings.tableName);
+
+            Close();
+        }
+        #endregion
+
     }
 }
