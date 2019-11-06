@@ -74,12 +74,15 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		GetPreviousPositionOfParent();
 		if(initialCollide == false){
 			if(groundScriptComponent.GetStepped() == false){
-				groundScriptComponent.Stepped();
-                jsGM.AddScore();
+
+                if (groundScriptComponent.groundType == GroundScript.GroundType.Shoe) { jsGM.AddScore(true); Destroy(groundScriptComponent.transform.GetChild(0).gameObject); }
+                else jsGM.AddScore();
+
+                groundScriptComponent.Stepped();
             }
-			
-		//	GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayCoinSound();
-			StartCoroutine(target.gameObject.GetComponent<GroundScript>().LandingEffect());
+
+            //	GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayCoinSound();
+            StartCoroutine(target.gameObject.GetComponent<GroundScript>().LandingEffect());
 			GameObject landingEffect = Instantiate(landingEffectPrefab,transform.position, Quaternion.identity);
 			Destroy(landingEffect,0.2f);
 
@@ -92,6 +95,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		}
     }
 
+    /*
     void OnTriggerEnter2D(Collider2D target)
     {
         if(target.gameObject.tag == "Shoe")
@@ -101,14 +105,17 @@ public class JumpShootPlayerScript : MonoBehaviour {
             shoeEffectParticle.Play();
         }
     }
+    */
+    IEnumerator OnCollisionExit2D(Collision2D target){
 
-        IEnumerator OnCollisionExit2D(Collision2D target){
-		yield return new WaitForSeconds(0.1f);
+        if (!gameObject.activeSelf) { StopAllCoroutines(); yield break; }
+
+	    yield return new WaitForSeconds(0.1f);
 		
-		if(currentPlayerState == PlayerState.Jumping){
-			GameObject.Find("_GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
-			 Destroy(target.gameObject,0.05f);
-		}
+	    if(currentPlayerState == PlayerState.Jumping){
+		    GameObject.Find("_GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
+			    Destroy(target.gameObject,0.05f);
+	    }
 		yield break;
 	}
 

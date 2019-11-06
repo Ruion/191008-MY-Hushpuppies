@@ -64,21 +64,21 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 
         StartCoroutine(GameOverScreenCoroutine());
 
-        
 	}
 
 	public void Revive(){
-		audioManager.StopDeadSound();
-		backgroundMusic.Play();
 		Time.timeScale = 1f;
 		newGround = groundHolder.transform.GetChild(0).gameObject;
 		newGroundScript = newGround.GetComponent<GroundScript>();
-		//newGroundScript.velocity = 0;
 		newGroundScript.velocity /= 2;
 		newGroundScript.Stepped();
-        
+        if (newGroundScript.groundType == GroundScript.GroundType.Shoe) { 
+           if(newGround.transform.GetChild(0) != null) Destroy(newGround.transform.GetChild(0).gameObject);
 
-		player.transform.position = new Vector3(newGround.transform.position.x,newGround.transform.position.y+1,newGround.transform.position.z);
+        }
+
+
+        player.transform.position = new Vector3(newGround.transform.position.x,newGround.transform.position.y+1,newGround.transform.position.z);
 		player.GetComponent<JumpShootPlayerScript>().RevivePlayer();
 	}
 
@@ -90,7 +90,6 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		yield return new WaitForSecondsRealtime(0.5f);		
 		float score = GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().currentScore;
         GM.GameOver();
-	//	GameObject.Find("_PrizeManager").GetComponent<PrizeManagerScript>().GameOver(score);
 		lost = true;
 	}
 
