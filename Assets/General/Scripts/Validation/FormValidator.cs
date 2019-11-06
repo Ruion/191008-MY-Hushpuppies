@@ -32,6 +32,9 @@ public class FormValidator : ServerModelMaster
     public GameObject emailWarning;
     public GameObject phoneWarning;
 
+    public GameObject[] Ok_Markers;
+    public GameObject[] NotOk_Markers;
+
     private List<string> emailList;
     private List<string> contactList;
     public UniversalUserDB udb;
@@ -77,7 +80,7 @@ public class FormValidator : ServerModelMaster
         CancelInvoke("Validate");
     }
 
-    private void Validate()
+    public void Validate()
     {
         T1Change();
         T2Change();
@@ -88,18 +91,24 @@ public class FormValidator : ServerModelMaster
     public void T1Change()
     {
         Text1OK = InputNotEmpty(NameText);
+
+        if (!Text1OK) { ChangeHint(0, false); }
+        else { ChangeHint(0, true); }
     }
 
     public void T2Change()
     {
         string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
         Text2OK = Regex.IsMatch(contact, PhonePattern);
-        if (!Text2OK) Debug.LogWarning("contact not correct : " + contact);
+        if (!Text2OK) { ChangeHint(1, false); }
+        else { ChangeHint(1, true); }
     }
 
     public void T3Change()
     {
         Text3OK = Regex.IsMatch(EmailText.text, MailPattern);
+        if (!Text3OK) { ChangeHint(2, false); }
+        else { ChangeHint(2, true); }
     }
 
     private bool InputNotEmpty(TMP_InputField text)
@@ -115,6 +124,12 @@ public class FormValidator : ServerModelMaster
     {
         userIsUnique = ToggleWarnings();
      //  if(!userIsUnique) Debug.Log("user not unique");
+    }
+
+    private void ChangeHint(int InputIndex, bool isPass = false)
+    {
+        Ok_Markers[InputIndex].SetActive(isPass);
+        NotOk_Markers[InputIndex].SetActive(!isPass);
     }
 
     private bool ToggleWarnings()
