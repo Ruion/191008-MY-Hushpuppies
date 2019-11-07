@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3458166200546572155}
   - component: {fileID: 1896187337894681569}
   - component: {fileID: 4626133306580023045}
+  - component: {fileID: 8766235314185660104}
   m_Layer: 0
   m_Name: Shoe
-  m_TagString: Untagged
+  m_TagString: Shoe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6396960871329547457}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.47, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.32635185, w: 0.94524837}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 1627495483889795921}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 38.095}
 --- !u!114 &1896187337894681569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +168,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 636eec2036d5c0f4ca51f4573717e83e, type: 3}
   - {fileID: 21300000, guid: af4a8b8222764684385049993a43f4d0, type: 3}
   - {fileID: 21300000, guid: 636eec2036d5c0f4ca51f4573717e83e, type: 3}
+--- !u!70 &8766235314185660104
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6396960871329547457}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.0458971, y: 0.6013986}
+  m_Size: {x: 18.212572, y: 6.6219354}
+  m_Direction: 1
 --- !u!1 &8120793640749308040
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,13 +208,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8120793640749308040}
-  m_LocalRotation: {x: -0, y: -0, z: 0.32635126, w: 0.94524854}
-  m_LocalPosition: {x: 1.15, y: 5, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3458166200546572155}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 38.095}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7552304341313757185
 SpriteRenderer:
   m_ObjectHideFlags: 0

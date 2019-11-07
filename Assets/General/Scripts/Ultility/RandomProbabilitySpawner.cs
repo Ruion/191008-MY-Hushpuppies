@@ -7,6 +7,7 @@ public class RandomProbabilitySpawner : MonoBehaviour
 {
     public SpriteChangerRandom prefab;
     public bool spawnOnEnable = true;
+    public float verticalPosBuffer = .5f;
 
     [Range(0f, 1f)]
     public float spawnProbability = .5f;
@@ -18,13 +19,13 @@ public class RandomProbabilitySpawner : MonoBehaviour
 
     public void Spawn()
     {
-       // float horizontalPos = Random.Range(-3.2f, 3.2f);
-       // float verticalPos = 2f;
-      //  Vector2 position = new Vector2(transform.position.x + horizontalPos, transform.position.y + verticalPos);
-        Vector2 position = new Vector2(transform.position.x , transform.position.y );
+        float horizontalPos = Random.Range(-3.2f, 3.2f);
+        Vector2 position = new Vector2(transform.position.x + horizontalPos, transform.position.y + verticalPosBuffer);
+        //  Vector2 position = new Vector2(transform.position.x , transform.position.y );
 
         //  if (Random.value <= spawnProbability) Instantiate(prefab, position, prefab.transform.rotation);
-        if (Random.value <= spawnProbability) { Instantiate(prefab, transform); StartCoroutine(ChangeGroundType()); }
+        // if (Random.value <= spawnProbability) { Instantiate(prefab, transform); StartCoroutine(ChangeGroundType()); }
+        if (Random.value <= spawnProbability) { Instantiate(prefab, position, prefab.transform.rotation); }
     }
 
     private IEnumerator ChangeGroundType()

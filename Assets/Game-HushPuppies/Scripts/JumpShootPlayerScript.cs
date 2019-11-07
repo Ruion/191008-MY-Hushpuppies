@@ -35,6 +35,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
 	Animator animatorComponent;
 
     public JumpShootGameManagerScript jsGM;
+    public float repositionRatio = 2f;
 	
 	void Awake () {
 		rigidBody2DComponent = GetComponent<Rigidbody2D>();
@@ -60,34 +61,42 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		}
 	}
 
+    
 	void OnCollisionEnter2D(Collision2D target){
-		// Get Standing Groud Type
-		GroundScript groundScriptComponent = target.gameObject.GetComponent<GroundScript>();
+
+        GroundScript groundScriptComponent = target.gameObject.GetComponent<GroundScript>();
         if (groundScriptComponent == null) return;
 
+        if (transform.position.y <= target.transform.position.y + 1) return;
+
+        SetPositionIntoParentBound(target.transform);
+        // Get Standing Groud Type
         standingGroundType = groundScriptComponent.groundType;
 
 		rigidBody2DComponent.velocity = Vector2.zero;
+        rigidBody2DComponent.gravityScale = 0;
 		currentPlayerState = PlayerState.Standing;
 		animatorComponent.SetBool("Jumping",false);
 		transform.SetParent(target.gameObject.transform);
-		GetPreviousPositionOfParent();
+        
+        GetPreviousPositionOfParent();
 		if(initialCollide == false){
 			if(groundScriptComponent.GetStepped() == false){
 
-                if (groundScriptComponent.groundType == GroundScript.GroundType.Shoe) { jsGM.AddScore(true); Destroy(groundScriptComponent.transform.GetChild(0).gameObject); shoeEffectParticle.Play(); }
-                else jsGM.AddScore();
-
+                // if (groundScriptComponent.groundType == GroundScript.GroundType.Shoe) { jsGM.AddScore(true); Destroy(groundScriptComponent.transform.GetChild(0).gameObject);  }
+                // if (groundScriptComponent.groundType == GroundScript.GroundType.Shoe) { jsGM.AddScore(true); }
+                //  else jsGM.AddScore();
+                jsGM.AddScore();
                 groundScriptComponent.Stepped();
+                GameObject landingEffect = Instantiate(landingEffectPrefab, transform.position, Quaternion.identity);
+                Destroy(landingEffect, 0.2f);
+
+                // play circle burst
+                landingEffectPrefab2.Play();
             }
 
-            //	GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayCoinSound();
             StartCoroutine(target.gameObject.GetComponent<GroundScript>().LandingEffect());
-			GameObject landingEffect = Instantiate(landingEffectPrefab,transform.position, Quaternion.identity);
-			Destroy(landingEffect,0.2f);
-
-            // play circle burst
-            landingEffectPrefab2.Play();
+			
         }
 		else
 		{
@@ -95,22 +104,41 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		}
     }
 
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if(target.tag == "Shoe")
+        {
+            jsGM.AddScore(true);
+            shootEffectPrefab.transform.position = target.transform.position;
+            Destroy(target.gameObject);
+            shoeEffectParticle.Play();
+        }
+    }
+
     IEnumerator OnCollisionExit2D(Collision2D target){
 
         if (!gameObject.activeSelf) { StopAllCoroutines(); yield break; }
 
 	    yield return new WaitForSeconds(0.1f);
-		
-	    if(currentPlayerState == PlayerState.Jumping){
+
+        if (currentPlayerState == PlayerState.Jumping){
 		    GameObject.Find("_GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
-			    Destroy(target.gameObject,0.05f);
+           if( target.collider.GetComponent<GroundScript>()?.GetStepped() == true ) Destroy(target.gameObject, 0.05f) ;
 	    }
-		yield break;
 	}
 
-	void GetPreviousPositionOfParent(){
+    void GetPreviousPositionOfParent(){
 		previousPosXParent = transform.parent.transform.position.x;
 	}
+
+    void SetPositionIntoParentBound(Transform parent)
+    {
+        BoxCollider2D parentCollider = GetComponentInParent<BoxCollider2D>();
+
+        if (transform.position.x > (parent.position.x + parentCollider.bounds.extents.x / repositionRatio) ) transform.position = new Vector2(transform.position.x - parentCollider.bounds.extents.x / repositionRatio, transform.position.y);
+        else if (transform.position.x < (parent.position.x - parentCollider.bounds.extents.x / repositionRatio) ) transform.position = new Vector2(transform.position.x + parentCollider.bounds.extents.x / repositionRatio, transform.position.y);
+
+    }
 
 	float ParentVelocity(){
 		return (transform.parent.transform.position.x - previousPosXParent) * throwSpeed / Time.deltaTime;
@@ -139,14 +167,15 @@ public class JumpShootPlayerScript : MonoBehaviour {
 				// StartCoroutine(Fall());
 			}
 			else if(currentPlayerState == PlayerState.Standing){
-				Jump();
+                Jump();
 			}
 		}
 	}
 
 	void Jump(){
 
-        
+        transform.SetParent(playerParent.transform);
+
         GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayJumpSound();
 		boxCollider2D.enabled = false;
 		currentPlayerState = PlayerState.Jumping;
@@ -159,7 +188,9 @@ public class JumpShootPlayerScript : MonoBehaviour {
 			// rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed);
 			rigidBody2DComponent.velocity = new Vector2(0,jumpSpeed);
 		}
-		transform.SetParent(playerParent.transform);
+
+        rigidBody2DComponent.gravityScale = 4;
+        
 	}
 
 	void DeadCheck(){
@@ -170,8 +201,6 @@ public class JumpShootPlayerScript : MonoBehaviour {
         	GameObject.Find("_GameManager").GetComponent<JumpShootGameManagerScript>().Revive();
 
         }
-
-        isDead = false;
 	}
 
 	void StopPlayer(){

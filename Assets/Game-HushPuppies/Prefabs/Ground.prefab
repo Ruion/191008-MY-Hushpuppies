@@ -107,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.76, y: 0.5352353}
+  m_Size: {x: 4.6, y: 0.5352353}
   m_EdgeRadius: 0
 --- !u!114 &114686908774875430
 MonoBehaviour:
@@ -144,4 +144,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4626133306580023045, guid: a2ee5e238de7c2742936ab059abebbac, type: 3}
   spawnOnEnable: 1
+  verticalPosBuffer: 0.8
   spawnProbability: 0.6

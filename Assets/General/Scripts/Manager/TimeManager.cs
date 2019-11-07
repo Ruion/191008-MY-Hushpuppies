@@ -14,7 +14,7 @@ public class TimeManager : MonoBehaviour
     }
     public float second = 120;
 
-    public float initialSecond;
+    [ReadOnly] public float initialSecond;
 
     public bool isRealtime = true;
     public string stringFormat = "";

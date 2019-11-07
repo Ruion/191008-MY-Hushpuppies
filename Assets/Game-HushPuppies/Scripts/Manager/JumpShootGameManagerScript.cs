@@ -74,16 +74,11 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 	}
 
 	public void Revive(){
-		Time.timeScale = 1f;
+	//	Time.timeScale = 1f;
 		newGround = groundHolder.transform.GetChild(0).gameObject;
 		newGroundScript = newGround.GetComponent<GroundScript>();
 		newGroundScript.velocity /= 2;
 		newGroundScript.Stepped();
-        if (newGroundScript.groundType == GroundScript.GroundType.Shoe) { 
-           if(newGround.transform.GetChild(0).GetComponent<SpriteChangerRandom>() != null) Destroy(newGround.transform.GetChild(0).gameObject);
-
-        }
-
 
         player.transform.position = new Vector3(newGround.transform.position.x,newGround.transform.position.y+1,newGround.transform.position.z);
 		player.GetComponent<JumpShootPlayerScript>().RevivePlayer();
@@ -92,7 +87,7 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 	IEnumerator DeadCoroutine(){
 		audioManager.PlayDeadSound();
 		backgroundMusic.Pause();
-		Time.timeScale = 0.1f;
+		//Time.timeScale = 0.1f;
 		GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().UpdateTotalScore();
 		yield return new WaitForSecondsRealtime(0.5f);		
 		float score = GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().currentScore;
@@ -105,9 +100,9 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 			GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().SaveScore();
 		}
 		yield return new WaitForSecondsRealtime(0.5f);
-		float score = GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().currentScore;
-		GameObject.Find("_PrizeManager").GetComponent<PrizeManagerScript>().GameOver(score);
-		GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().ChangeColorToWhite();
+		//float score = GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().currentScore;
+		//GameObject.Find("_PrizeManager").GetComponent<PrizeManagerScript>().GameOver(score);
+		//GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().ChangeColorToWhite();
 	}
 
 	public void RestartGame(){
@@ -126,4 +121,9 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 	public static bool isShop(){
 		return JumpShootGameManagerScript.gameState == JumpShootGameManagerScript.GameState.Shop;
 	}
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+    }
 }

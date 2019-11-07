@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1073918514104900, guid: 88f02e7b6ff934849a52004c1c450c6b, type: 3}
       propertyPath: m_Name
-      value: Ground_NoShoe
+      value: Ground_NoShoe Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4049363489221202, guid: 88f02e7b6ff934849a52004c1c450c6b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42,16 +42,6 @@ PrefabInstance:
     - target: {fileID: 4049363489221202, guid: 88f02e7b6ff934849a52004c1c450c6b, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61462337089310988, guid: 88f02e7b6ff934849a52004c1c450c6b,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.12374884
-      objectReference: {fileID: 0}
-    - target: {fileID: 61462337089310988, guid: 88f02e7b6ff934849a52004c1c450c6b,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.7525023
       objectReference: {fileID: 0}
     - target: {fileID: 1522042566307216867, guid: 88f02e7b6ff934849a52004c1c450c6b,
         type: 3}
