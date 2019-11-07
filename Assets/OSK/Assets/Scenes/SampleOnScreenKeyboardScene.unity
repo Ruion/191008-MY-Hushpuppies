@@ -545,25 +545,25 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2452114811308096172, guid: c216c4fb684db134c9cdf8441b831f9f,
-        type: 3}
-      propertyPath: TextField
-      value: 
-      objectReference: {fileID: 2146540112}
     - target: {fileID: 2452114810006785953, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2452114810106249890, guid: c216c4fb684db134c9cdf8441b831f9f,
+    - target: {fileID: 2452114811308096172, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: TextField
+      value: 
+      objectReference: {fileID: 2146540112}
     - target: {fileID: 2452114810701978350, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452114810106249890, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
