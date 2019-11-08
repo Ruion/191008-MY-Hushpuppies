@@ -12,9 +12,6 @@ public class JumpShootScoreManagerScript : GameSettingEntity {
     public ScriptableScore scoreCard;
 	[ReadOnly] public float bestScore;
 
-    public int JumpAddScore = 10;
-    public int CollectShoeAddScore = 15;
-
     public Animator scoreTextGround;
     public Animator scoreTextShoe;
 
@@ -35,7 +32,7 @@ public class JumpShootScoreManagerScript : GameSettingEntity {
 	}
 
 	public void AddScore(){
-        scoreCard.score += JumpAddScore;
+        scoreCard.score += gameSettings.scoreAddAmount;
         currentScore = scoreCard.score;
 		currentScoreText.text = currentScore.ToString();
 
@@ -44,7 +41,7 @@ public class JumpShootScoreManagerScript : GameSettingEntity {
 
     public void AddScoreShoe()
     {
-        scoreCard.score += CollectShoeAddScore;
+        scoreCard.score += gameSettings.scoreShoeAddAmount;
         currentScore = scoreCard.score;
         currentScoreText.text = currentScore.ToString();
 
