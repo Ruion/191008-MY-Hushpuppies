@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundScript : MonoBehaviour {
 	public enum GroundType{
-		Normal,JumpHigh,TimeBomb,Static, Shoe
+		Normal,JumpHigh,TimeBomb,Static
 	}
 
 	public float minDistanceFromScreen = 0f;

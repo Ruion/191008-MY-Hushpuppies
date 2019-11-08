@@ -21,7 +21,6 @@ public class JumpShootGameManagerScript : MonoBehaviour {
     public JumpShootScoreManagerScript scoreM;
     public AudioManagerScript audioM;
 
-
     void Awake(){
 		lost = false;
 		Time.timeScale = 1f;
@@ -88,9 +87,9 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		audioManager.PlayDeadSound();
 		backgroundMusic.Pause();
 		//Time.timeScale = 0.1f;
-		GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().UpdateTotalScore();
+	//	GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().UpdateTotalScore();
 		yield return new WaitForSecondsRealtime(0.5f);		
-		float score = GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().currentScore;
+	//	float score = GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().currentScore;
         GM.GameOver();
 		lost = true;
 	}
@@ -109,6 +108,11 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		Scene scene = SceneManager.GetActiveScene(); 
 		SceneManager.LoadScene(scene.name);
 	}
+
+    public void EnableJump()
+    {
+        gameState = GameState.Playing;
+    }
 
 	public static bool isPlaying(){
 		return JumpShootGameManagerScript.gameState == JumpShootGameManagerScript.GameState.Playing;

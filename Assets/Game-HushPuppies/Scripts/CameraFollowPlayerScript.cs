@@ -8,7 +8,7 @@ public class CameraFollowPlayerScript : MonoBehaviour {
 	public int yOffSet = 5;
 	float smooth = 0.3f;
 	Vector2 velocity = Vector2.zero;
-
+    
 	
 	void Start () {
 			
@@ -28,9 +28,10 @@ public class CameraFollowPlayerScript : MonoBehaviour {
         if (player == null) return;
 
 		Vector2 targetPosition = new Vector2(0, player.transform.position.y + yOffSet);
-        if (targetPosition.y < transform.position.y) return; 
+        if (targetPosition.y < transform.position.y) { return; }
 
 		transform.position = Vector2.SmoothDamp(transform.position,targetPosition,ref velocity,smooth);
 		transform.position = new Vector3(transform.position.x,transform.position.y,-10);
 	}	
+
 }

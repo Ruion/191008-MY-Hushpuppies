@@ -36,14 +36,15 @@ public class JumpShootPlayerScript : MonoBehaviour {
 
     public JumpShootGameManagerScript jsGM;
     public float repositionRatio = 2f;
-	
-	void Awake () {
+    public CameraShake camShake;
+
+    void Awake () {
 		rigidBody2DComponent = GetComponent<Rigidbody2D>();
 		boxCollider2D = GetComponent<BoxCollider2D>();
 		animatorComponent = GetComponent<Animator>();
 		//currentPlayerState = PlayerState.Jumping;
 		currentPlayerState = PlayerState.Standing;
-		animatorComponent.SetBool("Jumping",true);
+	//	animatorComponent.SetBool("Jumping",true);
 	}
 
 	void Start(){
@@ -106,6 +107,8 @@ public class JumpShootPlayerScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D target)
     {
+        if (isDead) return;
+
         if(target.tag == "Shoe")
         {
             jsGM.AddScore(true);
@@ -196,16 +199,17 @@ public class JumpShootPlayerScript : MonoBehaviour {
 	void DeadCheck(){
 		if(isDead == false && Camera.main.transform.position.y - transform.position.y > 8f){
             isDead = true;
+            camShake.enabled = true;
             StopPlayer();
-        //	GameObject.Find("_GameManager").GetComponent<JumpShootGameManagerScript>().Dead();
-        	GameObject.Find("_GameManager").GetComponent<JumpShootGameManagerScript>().Revive();
+        	jsGM.Dead();
+        //	jsGM.Revive();
 
         }
 	}
 
 	void StopPlayer(){
 		rigidBody2DComponent.isKinematic = true;
-		rigidBody2DComponent.velocity = new Vector2(0,0);
+	//	rigidBody2DComponent.velocity = new Vector2(0,0);
 	}
 
 	public void RevivePlayer(){

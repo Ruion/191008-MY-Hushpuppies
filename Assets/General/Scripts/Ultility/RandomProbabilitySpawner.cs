@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class RandomProbabilitySpawner : MonoBehaviour
 {
-    public SpriteChangerRandom prefab;
+    public GameObject prefab;
     public bool spawnOnEnable = true;
     public float verticalPosBuffer = .5f;
 
@@ -25,12 +25,9 @@ public class RandomProbabilitySpawner : MonoBehaviour
 
         //  if (Random.value <= spawnProbability) Instantiate(prefab, position, prefab.transform.rotation);
         // if (Random.value <= spawnProbability) { Instantiate(prefab, transform); StartCoroutine(ChangeGroundType()); }
-        if (Random.value <= spawnProbability) { Instantiate(prefab, position, prefab.transform.rotation); }
-    }
-
-    private IEnumerator ChangeGroundType()
-    {
-        yield return new WaitForSeconds(.1f);
-        GetComponent<GroundScript>().groundType = GroundScript.GroundType.Shoe;
+        if (Random.value <= spawnProbability) {
+            GameObject newShoe = Instantiate(prefab, position, prefab.transform.rotation);
+            FindObjectOfType<ShoeSpawnManager>().SpawnShoe(newShoe.GetComponentInChildren<SpriteRenderer>());
+        }
     }
 }

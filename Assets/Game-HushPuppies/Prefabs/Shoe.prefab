@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3458166200546572155}
   - component: {fileID: 1896187337894681569}
-  - component: {fileID: 4626133306580023045}
   - component: {fileID: 8766235314185660104}
   m_Layer: 0
   m_Name: Shoe
@@ -58,7 +57,7 @@ MonoBehaviour:
   onStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4626133306580023045}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeSpriteRandom
         m_Mode: 1
         m_Arguments:
@@ -150,24 +149,6 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
---- !u!114 &4626133306580023045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6396960871329547457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fddaf17650b6c0e4b91ea07beaca868b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: b6b09bb87cf4db741a28734cacb14d8c, type: 3}
-  - {fileID: 21300000, guid: af4a8b8222764684385049993a43f4d0, type: 3}
-  - {fileID: 21300000, guid: 636eec2036d5c0f4ca51f4573717e83e, type: 3}
-  - {fileID: 21300000, guid: af4a8b8222764684385049993a43f4d0, type: 3}
-  - {fileID: 21300000, guid: 636eec2036d5c0f4ca51f4573717e83e, type: 3}
 --- !u!70 &8766235314185660104
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
