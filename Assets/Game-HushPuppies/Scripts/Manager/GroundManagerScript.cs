@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundManagerScript : MonoBehaviour {
+public class GroundManagerScript : GameSettingEntity {
 	
 	[Header("Others")]
 	public GameObject groundPrefab;
@@ -25,7 +25,14 @@ public class GroundManagerScript : MonoBehaviour {
 	[Header("Debug")]
 	[ReadOnly] public int difficultyLevel = 1;
 	[ReadOnly] public int groundIndex = 0;
-	void Start () {
+
+    private void OnEnable()
+    {
+        minVelocity =  gameSettings.platformMinSpeed;
+        maxVelocity =  gameSettings.platformMaxSpeed;
+    }
+
+    void Start () {
 		InitGround();
 	}
 

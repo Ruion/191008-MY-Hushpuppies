@@ -100,14 +100,18 @@ public class FormValidator : ServerModelMaster
     {
         string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
         Text2OK = Regex.IsMatch(contact, PhonePattern);
-        if (!Text2OK) { ChangeHint(1, false); }
+        bool phoneIsUnique = TogglePhoneWarning();
+
+        if (!Text2OK || phoneIsUnique) { ChangeHint(1, false); }
         else { ChangeHint(1, true); }
     }
 
     public void T3Change()
     {
         Text3OK = Regex.IsMatch(EmailText.text, MailPattern);
-        if (!Text3OK) { ChangeHint(2, false); }
+        bool emailIsUnique = ToggleEmailWarning();
+
+        if (!Text3OK || emailIsUnique) { ChangeHint(2, false); }
         else { ChangeHint(2, true); }
     }
 
@@ -176,7 +180,7 @@ public class FormValidator : ServerModelMaster
 
         if (PhoneText.text != "")
         {
-            if (ValidateDuplicate(contactList, contactDropdown.value + PhoneText.text))
+            if (ValidateDuplicate(contactList, contactDropdown.options[contactDropdown.value].text + PhoneText.text, "+6"))
             {
                 phoneWarning.SetActive(true);
                 hasSame = true;
@@ -198,6 +202,16 @@ public class FormValidator : ServerModelMaster
         bool hasSame = false;
 
         string same = source.FirstOrDefault(t => t == text_);
+        if (same != null) hasSame = true;
+
+        return hasSame;
+    }
+
+    private bool ValidateDuplicate(List<string> source, string text_, string prefix)
+    {
+        bool hasSame = false;
+
+        string same = source.FirstOrDefault(t => t == prefix + text_);
         if (same != null) hasSame = true;
 
         return hasSame;

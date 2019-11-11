@@ -63,6 +63,8 @@ public class Settings
     public int scoreToWin = 3;
     public int scoreAddAmount = 10;
     public int scoreShoeAddAmount = 15;
+    public float platformMinSpeed = .6f;
+    public float platformMaxSpeed = 1.2f;
     public string userTypeName;
 
     public SQliteDBSettings sQliteDBSettings;
@@ -77,6 +79,8 @@ public class Settings
         scoreToWin = setting.scoreToWin;
         scoreAddAmount = setting.scoreAddAmount;
         scoreShoeAddAmount = setting.scoreShoeAddAmount;
+        platformMinSpeed = setting.platformMinSpeed;
+        platformMaxSpeed = setting.platformMaxSpeed;
         userTypeName = setting.userTypeName;
 
         sQliteDBSettings = setting.sQliteDBSettings;
