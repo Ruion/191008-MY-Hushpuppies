@@ -6096,7 +6096,7 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.scoreToWin
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
@@ -12095,7 +12095,7 @@ PrefabInstance:
     - target: {fileID: 3839321973774529125, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8439644529449454422, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -12463,7 +12463,7 @@ PrefabInstance:
     - target: {fileID: 2755806156563272807, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: gameSettings.DebugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2755806156563272807, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -12643,7 +12643,22 @@ PrefabInstance:
     - target: {fileID: 2755806156563272807, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: TestIndex
-      value: 9
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755806156563272807, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.scoreShoeAddAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755806156563272807, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.platformMinSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755806156563272807, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.platformMaxSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2678962261628774102, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -12864,7 +12879,7 @@ PrefabInstance:
     - target: {fileID: 3549255872592221148, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.76862746
+      value: 0.011764706
       objectReference: {fileID: 0}
     - target: {fileID: 2631691741585151075, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}

@@ -1255,7 +1255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 902, y: 0.00001335144}
+  m_AnchoredPosition: {x: 909.7, y: -50.899982}
   m_SizeDelta: {x: 358.3, y: 168.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &539313754
@@ -12942,8 +12942,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -42}
-  m_SizeDelta: {x: 0, y: 168.6}
+  m_AnchoredPosition: {x: 0, y: 8.9001465}
+  m_SizeDelta: {x: 15.4, y: 219.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1231216887
 MonoBehaviour:
@@ -14574,7 +14574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 184, y: 0.00001335144}
+  m_AnchoredPosition: {x: 191.69995, y: -50.899982}
   m_SizeDelta: {x: 358.3, y: 168.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1796547840
@@ -15296,7 +15296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2043401908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16663,7 +16663,7 @@ PrefabInstance:
     - target: {fileID: 1062055678822767054, guid: 293ce349e201e674386d5d96676e125c,
         type: 3}
       propertyPath: m_Name
-      value: Page_Pass > = 200
+      value: Page_Pass >= 150
       objectReference: {fileID: 0}
     - target: {fileID: 1062055678822767054, guid: 293ce349e201e674386d5d96676e125c,
         type: 3}
@@ -16673,7 +16673,7 @@ PrefabInstance:
     - target: {fileID: 4526629137044138324, guid: 293ce349e201e674386d5d96676e125c,
         type: 3}
       propertyPath: m_Name
-      value: Page_NotPass <= 200
+      value: Page_NotPass <= 150
       objectReference: {fileID: 0}
     - target: {fileID: 4526629137044138324, guid: 293ce349e201e674386d5d96676e125c,
         type: 3}
@@ -16683,12 +16683,12 @@ PrefabInstance:
     - target: {fileID: 4528111513141792267, guid: 293ce349e201e674386d5d96676e125c,
         type: 3}
       propertyPath: m_Name
-      value: Event OnScoreNotPass_ <= 200
+      value: Event OnScoreNotPass_ <= 150
       objectReference: {fileID: 0}
     - target: {fileID: 4528111513540487446, guid: 293ce349e201e674386d5d96676e125c,
         type: 3}
       propertyPath: m_Name
-      value: Event OnScorePass_ >= 200
+      value: Event OnScorePass_ >= 150
       objectReference: {fileID: 0}
     - target: {fileID: 4528111513540487441, guid: 293ce349e201e674386d5d96676e125c,
         type: 3}

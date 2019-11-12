@@ -176,18 +176,6 @@ public class UserServerModel : ServerModelMaster
 
         totalSent = 0;
 
-        #region using Reflection to send data but DISABLED FOR VERY SLOW 
-        /*
-        List<string> colToSend = new List<string>();
-        colToSend.AddRange(gameSettings.sQliteDBSettings.columns);
-
-        for (int i = 0; i < gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Count; i++)
-        {
-            colToSend.Remove(gameSettings.sQliteDBSettings.columnsToSkipWhenSync[i]);
-        }
-        */
-        #endregion
-
         #region WWWForm & UnityWebRequest send data
         Debug.Log("Start sync");
 
@@ -240,7 +228,7 @@ public class UserServerModel : ServerModelMaster
                     StopAllCoroutines();
 
                     // show red bar on fail
-                    failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
+                  //  failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
 
                     yield break;
                 }
@@ -264,17 +252,17 @@ public class UserServerModel : ServerModelMaster
                         Debug.LogError("try sync but fail");
 
                         // show red bar on fail
-                        failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
+                    //    failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
 
                         yield break;
                     }
 
-                    successSendDataHandler.GetComponentInChildren<TextMeshProUGUI>().text = jsonData.result;
+                  /*  successSendDataHandler.GetComponentInChildren<TextMeshProUGUI>().text = jsonData.result;
 
                     totalSent++;
                     sentText.text = totalSent.ToString();
                     successText.text = sentText.text;
-                    successBar.SetActive(true);
+                    successBar.SetActive(true);*/
 
                     udb.UpdateSyncUser(unSyncUsers[u]);
                     successSendDataHandler.SetActive(true);
@@ -286,8 +274,8 @@ public class UserServerModel : ServerModelMaster
         #endregion
 
         udb.Close();
-        successBar.GetComponent<StatusBar>().Finish();
-        failBar.GetComponent<StatusBar>().Finish();
+       // successBar.GetComponent<StatusBar>().Finish();
+       // failBar.GetComponent<StatusBar>().Finish();
 
         blockDataHandler.SetActive(false);
     }
