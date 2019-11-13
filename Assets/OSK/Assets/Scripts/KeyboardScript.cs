@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class KeyboardScript : MonoBehaviour
@@ -9,15 +10,17 @@ public class KeyboardScript : MonoBehaviour
     int selectionEndPost;
     int selectionAmount;
 
-    /*
+    
     private void OnEnable()
     {
+       // Debug.LogError("keyboard activated");
+
         if (Application.platform == RuntimePlatform.Android)
             gameObject.SetActive(false);
         else if (Application.platform == RuntimePlatform.IPhonePlayer)
             gameObject.SetActive(false);
     }
-    */
+    
 
     public TMPro.TMP_InputField inputFieldTMPro_
     {
@@ -30,6 +33,19 @@ public class KeyboardScript : MonoBehaviour
     }
 
     public TMPro.TMP_InputField inputFieldTMPro;
+
+    public InputField inputField_
+    {
+        get { return inputField; }
+        set
+        {
+            inputField = value;
+        }
+    }
+
+    public InputField inputField;
+
+
     public GameObject EngLayoutSml, EngLayoutBig, SymbLayout;
 
     public void alphabetFunction(string alphabet)
@@ -37,61 +53,86 @@ public class KeyboardScript : MonoBehaviour
         clickSound.Play();
         bool canType = true;
 
-        if (inputFieldTMPro.contentType == TMPro.TMP_InputField.ContentType.IntegerNumber)
+        if (inputFieldTMPro != null)
         {
-            int out_;
-            if (!int.TryParse(alphabet, out out_)) canType = false;
 
+            if (inputFieldTMPro.contentType == TMPro.TMP_InputField.ContentType.IntegerNumber)
+            {
+                int out_;
+                if (!int.TryParse(alphabet, out out_)) canType = false;
+
+            }
+
+            if (canType)
+            {
+                //   inputFieldTMPro.text += alphabet; // SAFE
+
+
+                if (!SelectionFocus())
+                {
+                    inputFieldTMPro.text = inputFieldTMPro.text.Insert(inputFieldTMPro.stringPosition, alphabet);
+                    inputFieldTMPro.stringPosition += alphabet.Length;
+                }
+                else
+                {
+                    RemoveSelectionTexts();
+                    inputFieldTMPro.text = inputFieldTMPro.text.Insert(inputFieldTMPro.stringPosition, alphabet);
+                    inputFieldTMPro.stringPosition += alphabet.Length;
+                }
+
+            }
+            inputFieldTMPro.Select();
         }
 
-        if (canType)
+        if(inputField != null)
         {
-         //   inputFieldTMPro.text += alphabet; // SAFE
-            
-            
-            if (!SelectionFocus())
+            if (inputField.contentType == InputField.ContentType.IntegerNumber)
             {
-               inputFieldTMPro.text = inputFieldTMPro.text.Insert(inputFieldTMPro.stringPosition, alphabet);
-               inputFieldTMPro.stringPosition += alphabet.Length;
+                int out_;
+                if (!int.TryParse(alphabet, out out_)) canType = false;
+
             }
-            else
+
+            if (canType)
             {
-                RemoveSelectionTexts();
-                inputFieldTMPro.text = inputFieldTMPro.text.Insert(inputFieldTMPro.stringPosition, alphabet);
-                inputFieldTMPro.stringPosition += alphabet.Length;
+                inputField.text += alphabet; // SAFE
             }
-            
         }
-        inputFieldTMPro.Select();
     }
 
     public void BackSpace()
     {
-        if (inputFieldTMPro.text.Length < 0) return;
-
-        clickSound.Play();
-
-       //  if (inputFieldTMPro.text.Length>0) inputFieldTMPro.text= inputFieldTMPro.text.Remove(inputFieldTMPro.text.Length-1); // SAFE
-
-         
-        int cutPos = inputFieldTMPro.stringPosition - 1;
-
-        if (!SelectionFocus())
+        if (inputFieldTMPro != null)
         {
-            if (inputFieldTMPro.stringPosition - 1 < 0) return;
-            string newText = inputFieldTMPro.text.Remove(cutPos, 1);
-            inputFieldTMPro.text = newText;
-            inputFieldTMPro.stringPosition = cutPos;
+            if (inputFieldTMPro.text.Length < 0) return;
+
+            clickSound.Play();
+
+            //  if (inputFieldTMPro.text.Length>0) inputFieldTMPro.text= inputFieldTMPro.text.Remove(inputFieldTMPro.text.Length-1); // SAFE
+
+
+            int cutPos = inputFieldTMPro.stringPosition - 1;
+
+            if (!SelectionFocus())
+            {
+                if (inputFieldTMPro.stringPosition - 1 < 0) return;
+                string newText = inputFieldTMPro.text.Remove(cutPos, 1);
+                inputFieldTMPro.text = newText;
+                inputFieldTMPro.stringPosition = cutPos;
+            }
+            else
+            {
+                RemoveSelectionTexts();
+            }
+
+
+            inputFieldTMPro.Select();
         }
-        else
+
+        if (inputField != null)
         {
-            RemoveSelectionTexts();
+            inputField.text.Remove(inputField.text.Length - 1);
         }
-        
-
-        inputFieldTMPro.Select();
-        //  if (inputFieldTMPro.stringPosition <= 0) inputFieldTMPro.MoveTextEnd(false);
-
     }
 
     public void ShowSelectionDetails()
