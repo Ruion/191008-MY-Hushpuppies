@@ -67,7 +67,7 @@ public class KeyboardScript : MonoBehaviour
             {
                 //   inputFieldTMPro.text += alphabet; // SAFE
 
-
+                
                 if (!SelectionFocus())
                 {
                     inputFieldTMPro.text = inputFieldTMPro.text.Insert(inputFieldTMPro.stringPosition, alphabet);
@@ -108,9 +108,9 @@ public class KeyboardScript : MonoBehaviour
 
             clickSound.Play();
 
-            //  if (inputFieldTMPro.text.Length>0) inputFieldTMPro.text= inputFieldTMPro.text.Remove(inputFieldTMPro.text.Length-1); // SAFE
+           // if (inputFieldTMPro.text.Length>0) inputFieldTMPro.text= inputFieldTMPro.text.Remove(inputFieldTMPro.text.Length-1); // SAFE
 
-
+            
             int cutPos = inputFieldTMPro.stringPosition - 1;
 
             if (!SelectionFocus())
@@ -127,6 +127,7 @@ public class KeyboardScript : MonoBehaviour
 
 
             inputFieldTMPro.Select();
+            
         }
 
         if (inputField != null)

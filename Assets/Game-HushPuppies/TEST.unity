@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -6167,11 +6168,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1876899309}
     m_Modifications:
-    - target: {fileID: 2267640678770317756, guid: 1862858ed9231414d8aa947619d9f5bb,
-        type: 3}
-      propertyPath: m_Name
-      value: Dropdown
-      objectReference: {fileID: 0}
     - target: {fileID: 2267640678770317757, guid: 1862858ed9231414d8aa947619d9f5bb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6291,6 +6287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267640678770317756, guid: 1862858ed9231414d8aa947619d9f5bb,
+        type: 3}
+      propertyPath: m_Name
+      value: Dropdown
       objectReference: {fileID: 0}
     - target: {fileID: 2267640678929178002, guid: 1862858ed9231414d8aa947619d9f5bb,
         type: 3}
@@ -10576,11 +10577,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1726792026}
     m_Modifications:
-    - target: {fileID: 2267640678770317756, guid: 1862858ed9231414d8aa947619d9f5bb,
-        type: 3}
-      propertyPath: m_Name
-      value: Dropdown
-      objectReference: {fileID: 0}
     - target: {fileID: 2267640678770317757, guid: 1862858ed9231414d8aa947619d9f5bb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10700,6 +10696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267640678770317756, guid: 1862858ed9231414d8aa947619d9f5bb,
+        type: 3}
+      propertyPath: m_Name
+      value: Dropdown
       objectReference: {fileID: 0}
     - target: {fileID: 2267640678929178002, guid: 1862858ed9231414d8aa947619d9f5bb,
         type: 3}
@@ -13925,16 +13926,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 218756498399517744, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: m_Name
-      value: HOME_Prefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 218756498399517744, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 218756497738917074, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -14210,6 +14201,16 @@ PrefabInstance:
       propertyPath: successText
       value: 
       objectReference: {fileID: 308902064}
+    - target: {fileID: 218756498399517744, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: m_Name
+      value: HOME_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 218756498399517744, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 440392878538229223, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive
@@ -16053,8 +16054,8 @@ PrefabInstance:
       propertyPath: m_text
       value: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type
-        specimen book.
+        when an unknown printer took a galley of type and scrambled it to make a
+        type specimen book.
       objectReference: {fileID: 0}
     - target: {fileID: 218756498774424289, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -20526,16 +20527,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 568325460}
     m_Modifications:
-    - target: {fileID: 2452114811308096170, guid: c216c4fb684db134c9cdf8441b831f9f,
-        type: 3}
-      propertyPath: m_Name
-      value: OnScreenKeyboard (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452114811308096170, guid: c216c4fb684db134c9cdf8441b831f9f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2452114811308096173, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20656,30 +20647,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3029654659112504331, guid: c216c4fb684db134c9cdf8441b831f9f,
+    - target: {fileID: 2452114811308096170, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 54.399994
+      propertyPath: m_Name
+      value: OnScreenKeyboard (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452114811308096170, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810006785953, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452114811308096172, guid: c216c4fb684db134c9cdf8441b831f9f,
-        type: 3}
-      propertyPath: inputFieldTMPro
-      value: 
-      objectReference: {fileID: 2058194982}
-    - target: {fileID: 131199263998367693, guid: c216c4fb684db134c9cdf8441b831f9f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 56.100006
-      objectReference: {fileID: 0}
-    - target: {fileID: 8195939004323815196, guid: c216c4fb684db134c9cdf8441b831f9f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 69.495026
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810841171992, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
@@ -20696,11 +20677,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7395768088845792774, guid: c216c4fb684db134c9cdf8441b831f9f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 56.100006
-      objectReference: {fileID: 0}
     - target: {fileID: 4487589662399866025, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
       propertyPath: destinations.Array.size
@@ -20715,6 +20691,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452114811308096172, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: inputFieldTMPro
+      value: 
+      objectReference: {fileID: 2058194982}
+    - target: {fileID: 3029654659112504331, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 54.399994
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195939004323815196, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 69.495026
+      objectReference: {fileID: 0}
+    - target: {fileID: 131199263998367693, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 56.100006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395768088845792774, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 56.100006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
@@ -22490,6 +22491,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

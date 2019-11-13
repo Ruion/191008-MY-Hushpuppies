@@ -17,15 +17,35 @@ public class DropDownFieldFeeder : MonoBehaviour
     [ContextMenu("FeedMobileCode")]
     public void Feed()
     {
+        string path = Application.streamingAssetsPath + "/PhoneNumberExtension.txt";
+        string[] texts;
+        List<string> options = new List<string>();
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            BetterStreamingAssets.Initialize();
+
+            //  path = "jar:file://" + Application.dataPath + "!/assets/" + fileName + ".setting";
+            path = "PhoneNumberExtension.txt";
+
+            if (!BetterStreamingAssets.FileExists(path))
+            {
+                Debug.LogErrorFormat("Streaming asset not found: {0}", path);
+                return;
+            }
+
+            texts = BetterStreamingAssets.ReadAllLines(path);
+        }
+        else
+        {
+            texts = System.IO.File.ReadAllLines(path);
+        }
+
         if (dropDown != null)
         {
             dropDown.ClearOptions();
 
-            string path = Application.streamingAssetsPath + "/PhoneNumberExtension.txt";
-
-            string[] texts = System.IO.File.ReadAllLines(path);
-
-            List<string> options = new List<string>();
+            options = new List<string>();
 
             foreach (string line in texts)
             {
@@ -35,15 +55,15 @@ public class DropDownFieldFeeder : MonoBehaviour
             dropDown.AddOptions(options);
         }
 
-        if(dropDownUI != null)
+        if (dropDownUI != null)
         {
             dropDownUI.ClearOptions();
 
-            string path = Application.streamingAssetsPath + "/PhoneNumberExtension.txt";
+            path = Application.streamingAssetsPath + "/PhoneNumberExtension.txt";
 
-            string[] texts = System.IO.File.ReadAllLines(path);
+            texts = System.IO.File.ReadAllLines(path);
 
-            List<string> options = new List<string>();
+            options = new List<string>();
 
             foreach (string line in texts)
             {
@@ -52,6 +72,6 @@ public class DropDownFieldFeeder : MonoBehaviour
 
             dropDownUI.AddOptions(options);
         }
-    }
+     }
+ }
 
-}

@@ -8,6 +8,7 @@ public class GameSettingEntity : MonoBehaviour
 {
     [Header("GameSetting - SAVE setting every new project")]
     public Settings gameSettings;
+    public bool debugMode { set { gameSettings.DebugMode = value; SaveSetting(); } }
 
     [ContextMenu("SaveSetting")]
     public virtual void SaveSetting()
