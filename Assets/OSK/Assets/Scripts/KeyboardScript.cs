@@ -9,6 +9,7 @@ public class KeyboardScript : MonoBehaviour
     int selectionEndPost;
     int selectionAmount;
 
+    /*
     private void OnEnable()
     {
         if (Application.platform == RuntimePlatform.Android)
@@ -16,6 +17,7 @@ public class KeyboardScript : MonoBehaviour
         else if (Application.platform == RuntimePlatform.IPhonePlayer)
             gameObject.SetActive(false);
     }
+    */
 
     public TMPro.TMP_InputField inputFieldTMPro_
     {

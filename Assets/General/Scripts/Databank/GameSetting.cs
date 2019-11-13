@@ -29,24 +29,51 @@ public static class GameSetting
     // load the game setting file
     public static Settings LoadSetting(string fileName)
     {
-        string path = Application.streamingAssetsPath + "/" + fileName + ".setting";
 
-        if (File.Exists(path))
+        string path = "";
+
+        if (Application.platform == RuntimePlatform.Android)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            BetterStreamingAssets.Initialize();
 
-            Settings setting = (Settings)formatter.Deserialize(stream);
-            stream.Close();
+            //  path = "jar:file://" + Application.dataPath + "!/assets/" + fileName + ".setting";
+            path = fileName + ".setting";
 
-            return setting;
+            if (!BetterStreamingAssets.FileExists(path))
+            {
+                Debug.LogErrorFormat("Streaming asset not found: {0}", path);
+                return null;
+            }
+
+            using (var stream = BetterStreamingAssets.OpenRead(path))
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Settings));
+                return (Settings)serializer.Deserialize(stream);
+            }
         }
+
         else
         {
-            Debug.LogError("Save file not found in " + path);
-            return null;
+            path = Application.streamingAssetsPath + "/" + fileName + ".setting";
+
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
+
+                Settings setting = (Settings)formatter.Deserialize(stream);
+                stream.Close();
+
+                return setting;
+            }
+            else
+            {
+                Debug.LogError("Save file not found in " + path);
+                return null;
+            }
         }
     }
+
 }
 
 [System.Serializable]

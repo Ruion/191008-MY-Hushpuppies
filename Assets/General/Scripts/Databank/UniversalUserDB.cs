@@ -27,16 +27,15 @@ namespace DataBank
         public int TestIndex = 5;
         #endregion
 
-        private void Awake()
+        public override void Awake()
         {
+            base.Awake();
             CreateTable();
         }
 
         [ContextMenu("Create table")]
         public override void CreateTable()
         {
-            LoadGameSettingFromMaster();
-
             ConnectDb(gameSettings.sQliteDBSettings.dbName);
 
             IDbCommand dbcmd = GetDbCommand();
