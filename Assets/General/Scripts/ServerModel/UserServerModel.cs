@@ -143,7 +143,8 @@ public class UserServerModel : ServerModelMaster
     }
 
     IEnumerator DataToSend()
-    { 
+    {
+        HideAllHandler();
         blockDataHandler.SetActive(true);
 
         #region Check Internet
@@ -153,6 +154,7 @@ public class UserServerModel : ServerModelMaster
         {
             //No connection
             internetErrorHandler.SetActive(true);
+            blockDataHandler.SetActive(false);
             yield break;
         }
         #endregion
@@ -173,6 +175,8 @@ public class UserServerModel : ServerModelMaster
         #endregion
 
         Debug.Log("unsync users : " + unSyncUsers.Count);
+
+        if (unSyncUsers.Count < 1) yield break;
 
         totalSent = 0;
 
@@ -213,63 +217,56 @@ public class UserServerModel : ServerModelMaster
 
             using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverAddress, form))
             {
-
                 loadingHandler.SetActive(true);
                 yield return www.SendWebRequest();
 
                 if (www.isNetworkError || www.isHttpError)
                 {
-                    errorHandler.SetActive(true);
-                    errorCodeText.text = www.error;
-
-                    blockDataHandler.SetActive(false);
-                    Debug.LogError("try sync but server fail");
-                    Debug.LogError(www.error);
-                    StopAllCoroutines();
+                    ErrorAction(www, "try sync but server fail");
+                    //  StopAllCoroutines();
 
                     // show red bar on fail
-                  //  failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
+                    //  failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
 
-                    yield break;
+                    //  yield break;
                 }
                 else
                 {
                   //  yield return new WaitForEndOfFrame();
                     var jsonData = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
 
-                    Debug.Log(www.downloadHandler.text);
+                    //Debug.Log(www.downloadHandler.text);
 
-                    if (jsonData.result != "Success")
+                    if (jsonData.result == "Success")
                     {
+                        successSendDataHandler.SetActive(true);
 
-                        HideAllHandler();
-                        errorHandler.SetActive(true);
-                        errorCodeText.text = "Send but fail " + www.error;
-
+                        udb.UpdateSyncUser(unSyncUsers[u], "online_status", "submitted");
                         blockDataHandler.SetActive(false);
+                        /*  successSendDataHandler.GetComponentInChildren<TextMeshProUGUI>().text = jsonData.result;
 
-                        StopAllCoroutines();
-                        Debug.LogError("try sync but fail");
+                        totalSent++;
+                        sentText.text = totalSent.ToString();
+                        successText.text = sentText.text;
+                        successBar.SetActive(true);
+                         */
+                        Debug.Log("success");
 
-                        // show red bar on fail
-                    //    failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
-
-                        yield break;
+                    }
+                    else if (jsonData.result == "Fail")
+                    {
+                        Debug.LogError("sent fail");
+                    }
+                    else if (jsonData.result == "Duplicate")
+                    {
+                        Debug.LogError("duplicate fail");
+                        udb.UpdateSyncUser(unSyncUsers[u], "online_status", "duplicate");
                     }
 
-                  /*  successSendDataHandler.GetComponentInChildren<TextMeshProUGUI>().text = jsonData.result;
-
-                    totalSent++;
-                    sentText.text = totalSent.ToString();
-                    successText.text = sentText.text;
-                    successBar.SetActive(true);*/
-
-                    udb.UpdateSyncUser(unSyncUsers[u]);
-                    successSendDataHandler.SetActive(true);
                 }
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1f);
         }
         #endregion
 
@@ -278,6 +275,17 @@ public class UserServerModel : ServerModelMaster
        // failBar.GetComponent<StatusBar>().Finish();
 
         blockDataHandler.SetActive(false);
+    }
+
+    private void ErrorAction(UnityWebRequest www, string errorMessage)
+    {
+        HideAllHandler();
+        errorHandler.SetActive(true);
+        errorCodeText.text = errorMessage + "\n" + www.error;
+
+        blockDataHandler.SetActive(false);
+
+        Debug.LogError(errorMessage + "\n" + www.error + "\n" + " server url: " + gameSettings.serverAddress);
     }
 
     #endregion

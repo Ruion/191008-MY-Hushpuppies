@@ -22,9 +22,7 @@ public class FormValidator : ServerModelMaster
     public TMP_InputField NameText;
     public TMP_InputField PhoneText;
     public TMP_InputField EmailText;
-    public InputField NameTextUI;
-    public InputField PhoneTextUI;
-    public InputField EmailTextUI;
+
     public TMP_Dropdown contactDropdown;
     public Toggle toggle;
 

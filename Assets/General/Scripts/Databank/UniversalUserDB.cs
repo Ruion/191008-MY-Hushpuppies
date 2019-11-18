@@ -22,7 +22,7 @@ namespace DataBank
         private string KEY_GAME_RESULT = "game_result"; // 8
         private string KEY_VOUCHER_ID = "voucher_id"; // 9
         private string KEY_DATE = "created_at"; // 10
-        private string KEY_SYNC = "is_submitted"; // 11
+        private string KEY_SYNC = "online_status"; // 11
 
         public int TestIndex = 5;
         #endregion
@@ -212,8 +212,8 @@ namespace DataBank
                 val[5] = "male";
                 val[6] = "lose";
                 val[7] = "200";
-                val[val.Count - 2] = System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-                val[val.Count - 1] = "false";
+                val[val.Count - 2] = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                val[val.Count - 1] = "new";
 
                 AddData(col, val);
             }
@@ -288,17 +288,13 @@ namespace DataBank
         public IDataReader GetDataByStringLimit(string conditionlowercase, string str, int limitNumber)
         {
             ConnectDbCustom();
-            Debug.Log(CodistanTag + "Getting data: " + conditionlowercase + " " + str);
+            Debug.Log(CodistanTag + "Getting data: " + conditionlowercase + " = " + str);
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
                 "SELECT * FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + conditionlowercase + " = '" + str + "' LIMIT " + limitNumber.ToString();
             return dbcmd.ExecuteReader();
         }
-
-        #endregion
-
-
 
         [ContextMenu("GetAllData")]
         public override IDataReader GetAllData()
@@ -409,41 +405,13 @@ namespace DataBank
             return entities;
         }
 
-        public List<UniversalUserEntity> GetAllUnSyncUserSlow()
-        {
-            List<UniversalUserEntity> entities = new List<UniversalUserEntity>();
-
-            ConnectDbCustom();
-
-            FieldInfo[] fieldInfo = Type.GetType(gameSettings.sQliteDBSettings.UniversalUserClassName).GetFields();
-
-            IDataReader reader = GetDataByString(KEY_SYNC, "false");
-         //   Debug.Log("Reader fieldCount : " + reader.FieldCount);
-
-            while (reader.Read())
-            {
-                UniversalUserEntity entity = new UniversalUserEntity();
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                   // Debug.Log("Index i : " + i);
-                    fieldInfo[i].SetValue(entity, reader[i].ToString());
-                }
-
-                entities.Add(entity);
-            }
-
-            Close();
-
-            return entities;
-        }
-
         public List<UniversalUserEntity> GetAllUnSyncUser()
         {
             List<UniversalUserEntity> entities = new List<UniversalUserEntity>();
 
             ConnectDbCustom();
 
-            IDataReader reader = GetDataByString(KEY_SYNC, "false");
+            IDataReader reader = GetDataByString(KEY_SYNC, "new");
             //   Debug.Log("Reader fieldCount : " + reader.FieldCount);
 
             while (reader.Read())
@@ -461,7 +429,7 @@ namespace DataBank
                     entity.game_result = reader[7].ToString();
                     entity.game_score = reader[8].ToString();
                     entity.created_at = reader[9].ToString();
-                    entity.is_submitted = reader[10].ToString();
+                    entity.online_status = reader[10].ToString();
                 }
 
                 entities.Add(entity);
@@ -479,26 +447,32 @@ namespace DataBank
 
             ConnectDbCustom();
 
-            IDataReader reader = GetDataByStringLimit(KEY_SYNC, "false", 10);
-             Debug.Log("Reader fieldCount : " + reader.FieldCount);
+            IDataReader reader = GetDataByStringLimit(KEY_SYNC, "new", 10);
+             Debug.Log("columns : " + reader.FieldCount + " | Rows :" + reader.RecordsAffected);
 
             while (reader.Read())
             {
                 UniversalUserEntity entity = new UniversalUserEntity();
+                // Debug.Log("Index i : " + i);
+                entity.name = reader[1].ToString();
+                entity.email = reader[2].ToString();
+                entity.contact = reader[3].ToString();
+                //    entity.age = reader[4].ToString();
+                //    entity.dob = reader[5].ToString();
+                //   entity.gender = reader[6].ToString();
+                entity.game_result = reader[7].ToString();
+                entity.game_score = reader[8].ToString();
+                entity.created_at = reader[9].ToString();
+                entity.online_status = reader[10].ToString();
+
+               /* string columnData = "";
+
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
-                    // Debug.Log("Index i : " + i);
-                    entity.name = reader[1].ToString();
-                    entity.email = reader[2].ToString();
-                    entity.contact = reader[3].ToString();
-                    //    entity.age = reader[4].ToString();
-                    //    entity.dob = reader[5].ToString();
-                    //   entity.gender = reader[6].ToString();
-                    entity.game_result = reader[7].ToString();
-                    entity.game_score = reader[8].ToString();
-                    entity.created_at = reader[9].ToString();
-                    entity.is_submitted = reader[10].ToString();
+                    columnData += reader[i].ToString() + " | ";
                 }
+                Debug.Log(columnData);
+                */
 
                 entities.Add(entity);
             }
@@ -508,24 +482,25 @@ namespace DataBank
             return entities;
         }
 
+        #endregion
 
-      public void UpdateSyncUser(UniversalUserEntity userEntity)
-        {
+        public void UpdateSyncUser(UniversalUserEntity userEntity, string column_, string value_)
+      {
             List<string> col = new List<string>();
             List<string> con = new List<string>();
 
-            col.Add("is_submitted");
-            con.Add("true");
+            col.Add(column_);
+            con.Add(value_);
 
             string condition = KEY_EMAIL + " = '" + userEntity.email + "'";
 
-            try { UpdateData(col, con, condition); Debug.Log("Update user " + userEntity.email + " to submitted"); }
+            try { UpdateData(col, con, condition); Debug.Log("Update " + userEntity.email + " " + column_ + " = " + value_); }
             catch (Exception ex)
             {
                 Debug.LogError(ex.Message);
             }
 
-         }
+       }
 
         #region Delete Data
 
@@ -550,9 +525,9 @@ namespace DataBank
             base.DeleteDataById(id);
         }
 
-        public override void DeleteAllData()
+        public void DropTable()
         {
-            Debug.Log(CodistanTag + "Deleting Table");
+            Debug.Log(CodistanTag + "Drop Table");
 
             ConnectDbCustom();
 
@@ -560,6 +535,20 @@ namespace DataBank
 
             Close();
         }
+
+        public override void DeleteAllData()
+        {
+            Debug.Log(CodistanTag + "Deleting Table");
+
+            ConnectDbCustom();
+
+            IDbCommand dbcmd = db_connection.CreateCommand();
+            dbcmd.CommandText = "DELETE FROM " + gameSettings.sQliteDBSettings.tableName;
+            dbcmd.ExecuteNonQuery();
+
+            Close();
+        }
+
         #endregion
 
     }

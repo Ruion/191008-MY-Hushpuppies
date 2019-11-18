@@ -13,6 +13,6 @@
         public string game_result;
         public string game_score;
         public string created_at;
-        public string is_submitted;
+        public string online_status;
     }
 }

@@ -20,7 +20,7 @@ public class GameSettingEntity : MonoBehaviour
     public virtual void LoadSetting()
     {
         gameSettings = GameSetting.LoadSetting(gameSettings.fileName);
-        Refresh();
+        //Refresh();
     }
 
     [ContextMenu("LoadMasterSetting")]

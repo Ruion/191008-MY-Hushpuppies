@@ -63,6 +63,7 @@ public class TimeManager : MonoBehaviour
             // Execute event on countdown ended
             countdownEndEvents.Invoke();
             StopAllCoroutines();
+            second = initialSecond;
             yield return null;
         }
 

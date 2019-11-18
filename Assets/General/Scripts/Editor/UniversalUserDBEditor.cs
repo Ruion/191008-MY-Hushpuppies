@@ -22,7 +22,7 @@ public class UniversalUserDBEditor : GameSettingEntityEditor
 
         if (GUILayout.Button("Clear Table"))
         {
-            u.DeleteAllData(u.gameSettings.sQliteDBSettings.tableName);
+            u.DeleteAllData();
         }
     }
 }
