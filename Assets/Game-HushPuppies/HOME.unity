@@ -6515,7 +6515,7 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.DebugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
