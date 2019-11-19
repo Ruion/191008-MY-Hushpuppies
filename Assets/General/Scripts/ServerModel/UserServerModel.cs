@@ -35,8 +35,6 @@ public class UserServerModel : ServerModelMaster
     public List<string> localEmailList = new List<string>();
     public List<string> emailList = new List<string>();
 
-    private OnlineServerModel osm;
-
     private void Start()
     {
         HideAllHandler();
@@ -176,7 +174,7 @@ public class UserServerModel : ServerModelMaster
 
         Debug.Log("unsync users : " + unSyncUsers.Count);
 
-        if (unSyncUsers.Count < 1) yield break;
+        if (unSyncUsers.Count < 1) { emptyHandler.SetActive(true); blockDataHandler.SetActive(false); yield break; }
 
         totalSent = 0;
 
@@ -286,76 +284,6 @@ public class UserServerModel : ServerModelMaster
         blockDataHandler.SetActive(false);
 
         Debug.LogError(errorMessage + "\n" + www.error + "\n" + " server url: " + gameSettings.serverAddress);
-    }
-
-    #endregion
-
-    #region Get Server Data
-    [ContextMenu("GetServerData")]
-    public void DoGetDataFromServer()
-    {
-        StartCoroutine(GetDataFromServer());
-    }
-    
-    // to be configure
-    IEnumerator GetDataFromServer()
-    {
-        LoadGameSettingFromMaster();
-
-        osm = FindObjectOfType<OnlineServerModel>();
-
-        yield return StartCoroutine(osm.FeedEmail(emailList));
-
-        emailList = new List<string>();
-        emailList.AddRange(osm.emailList);
-
-        if (emailList.Count < 1) { Debug.Log("no server user"); yield break; }
-
-        for (int i = 0; i < emailList.Count; i++)
-        {
-            // add user never exist in local
-            AddUniqueUser(emailList[i], localEmailList);
-        }
-
-    }
-    
-    private IEnumerator CompareLocalAndServerData()
-    {
-        SetUpDb();
-
-        DataBank.UniversalUserEntity u = new DataBank.UniversalUserEntity();
-
-        for (int m = 0; m < emailList.Count; m++)
-        {
-            UniversalUserEntity foundUser = FindDuplicatedStringItem(emailList[m], unSyncUsers);
-            if (foundUser != null)
-            {
-               // SetUpDb();
-              //  if (udb.GetDataByString("email", foundUser.email) != null) udb.UpdateSyncUser(foundUser);
-
-                yield return new WaitForEndOfFrame();
-                unSyncUsers.Remove(foundUser);
-                
-                Debug.Log(foundUser.email + " is removed from sync");
-            }
-        }
-
-    }
-
-    [ContextMenu("Get UnSync email")]
-    public void GetUnSyncEmail()
-    {
-        SetUpDb();
-        IDataReader reader = udb.GetDataByString("is_submitted", "false");
-        while (reader.Read())
-        {
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                Debug.Log(reader[i]);
-            }
-            
-        }
-        udb.Close();
     }
 
     #endregion

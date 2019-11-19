@@ -218,20 +218,4 @@ public class FormValidator : ServerModelMaster
         return hasSame;
     }
 
-    public void DoCombineServerUsers()
-    {
-        StartCoroutine(CombineServerUsers());
-    }
-
-    private IEnumerator CombineServerUsers()
-    {
-        OnlineServerModel osm = FindObjectOfType<OnlineServerModel>();
-
-        yield return StartCoroutine(osm.GetDataFromServer());
-
-        for (int i = 0; i < osm.emailList.Count; i++)
-        {
-            AddUniqueUser(osm.emailList[i], emailList);
-        }
-    }
 }

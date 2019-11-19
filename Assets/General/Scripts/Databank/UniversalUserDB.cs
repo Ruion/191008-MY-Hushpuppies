@@ -52,6 +52,8 @@ namespace DataBank
                 else dbcmd.CommandText += " ) ; ";
             }
 
+            Debug.Log(gameSettings.sQliteDBSettings.columns.Count + " created");
+
             try { dbcmd.ExecuteNonQuery(); Debug.Log("table success created"); }
             catch (Exception ex) { Debug.LogError(ex.Message); return; }
 
@@ -311,7 +313,11 @@ namespace DataBank
             if (reader.FieldCount < 1) { Debug.LogError("Empty record"); return null; }
             else
             {
-              //  Debug.Log(reader.FieldCount + " record in table " + gameSettings.sqliteDBSettings.tableName);
+                Debug.Log(reader.FieldCount + " columns in table " + gameSettings.sQliteDBSettings.tableName);
+                for (var i = 0; i < reader.FieldCount; i++)
+                {
+                    Debug.Log(reader.GetName(i));
+                }
             }
 
             return reader;
@@ -525,6 +531,7 @@ namespace DataBank
             base.DeleteDataById(id);
         }
 
+        [ContextMenu("DropTable")]
         public void DropTable()
         {
             Debug.Log(CodistanTag + "Drop Table");

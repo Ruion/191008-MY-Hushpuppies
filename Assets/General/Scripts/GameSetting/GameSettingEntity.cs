@@ -36,6 +36,7 @@ public class GameSettingEntity : MonoBehaviour
 
     public virtual void Refresh()
     {
+        /*
         gameSettings.sQliteDBSettings.columns = new List<string>();
         // get columns name from class fields
       //  if (gameSettings.sQliteDBSettings.columns.Count < 1)
@@ -61,6 +62,7 @@ public class GameSettingEntity : MonoBehaviour
                 Debug.LogError(ex.Message);
             }
       //  }
+      */
     }
 
     public virtual void Awake()
