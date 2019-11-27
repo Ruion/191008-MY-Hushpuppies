@@ -46,7 +46,7 @@ public class KeyboardScript : MonoBehaviour
     public InputField inputField;
 
 
-    public GameObject EngLayoutSml, EngLayoutBig, SymbLayout;
+    public GameObject EngLayoutSml, EngLayoutBig, EnglishSymbLayout,SymbLayout;
 
     public void alphabetFunction(string alphabet)
     {
@@ -173,6 +173,7 @@ public class KeyboardScript : MonoBehaviour
         EngLayoutSml.SetActive(false);
         EngLayoutBig.SetActive(false);
         SymbLayout.SetActive(false);
+        EnglishSymbLayout.SetActive(false);
 
     }
 
